@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)#events -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIP Abacus — Unlock Your Child's Brain Power</title>
+<meta name="description" content="SIP Abacus mental arithmetic program for children ages 5–14. Book a free demo class today.">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Fraunces:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233F;
+    --ink-soft:#3C4E70;
+    --ink-faint:#8895AC;
+    --paper:#FBF6EC;
+    --paper-alt:#F1EADB;
+    --paper-line:#E4DAC4;
+    --coral:#FF6B5B;
+    --sun:#FFC93C;
+    --teal:#1FA98E;
+    --violet:#8B5FBF;
+    --magenta:#E8437A;
+    --sky:#2E9BE0;
+    --white:#FFFFFF;
+    --radius-s:10px;
+    --radius-m:18px;
+    --radius-l:28px;
+    --shadow-card: 0 1px 2px rgba(22,35,63,.06), 0 12px 28px -14px rgba(22,35,63,.22);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Sora', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.08;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  button{font-family:inherit;cursor:pointer;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--magenta);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{content:'';width:22px;height:1px;background:var(--magenta);display:inline-block;}
+  section{scroll-margin-top:88px;}
+  ::selection{background:var(--sun);color:var(--ink);}
+  :focus-visible{outline:3px solid var(--magenta);outline-offset:3px;border-radius:4px;}
+
+  /* ---------- PROMO BANNER (scrolling announcement cards) ---------- */
+  .promo-banner{
+    position:relative;background:var(--ink);overflow:hidden;
+    padding:22px 0;border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .promo-banner.hidden{display:none;}
+  .promo-fade{position:absolute;top:0;bottom:0;width:180px;z-index:2;pointer-events:none;}
+  .promo-fade.left{left:0;background:linear-gradient(90deg,var(--ink) 35%,rgba(22,35,63,.85) 60%,transparent);}
+  .promo-fade.right{right:0;background:linear-gradient(270deg,var(--ink) 35%,rgba(22,35,63,.85) 60%,transparent);}
+  .promo-close{
+    position:absolute;top:12px;right:16px;z-index:3;
+    width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.3);
+    background:rgba(255,255,255,.06);color:var(--paper);
+    display:flex;align-items:center;justify-content:center;font-size:15px;line-height:1;
+    transition:background .15s;
+  }
+  .promo-close:hover{background:rgba(255,255,255,.18);}
+  .promo-track{
+    display:flex;gap:18px;width:max-content;padding:0 28px;
+    animation:promo-scroll 32s linear infinite;
+  }
+  .promo-banner:hover .promo-track{animation-play-state:paused;}
+  @keyframes promo-scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+  .promo-card{
+    position:relative;flex:0 0 auto;width:210px;min-height:190px;
+    border-radius:var(--radius-m);padding:18px 16px;
+    background:linear-gradient(160deg,#FFC93C,#FF6B5B);
+    box-shadow:0 14px 30px -14px rgba(0,0,0,.45);
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .promo-flag{
+    align-self:flex-start;display:flex;align-items:center;gap:6px;
+    font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--white);
+    background:rgba(22,35,63,.85);padding:5px 10px;border-radius:999px;
+  }
+  .promo-flag.live{background:#B3261E;}
+  .promo-flag .live-dot{width:6px;height:6px;border-radius:50%;background:#FF8A80;animation:promo-pulse 1.4s ease-in-out infinite;}
+  @keyframes promo-pulse{0%,100%{opacity:1;}50%{opacity:.25;}}
+  .promo-tag{
+    align-self:flex-start;font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--ink);
+    background:rgba(22,35,63,.14);padding:5px 10px;border-radius:999px;
+  }
+  .promo-card p{font-family:'Fraunces',serif;font-weight:600;font-size:16.5px;color:var(--ink);line-height:1.32;}
+
+  /* ---------- TICKER (continuous feature marquee) ---------- */
+  .ticker-bar{
+    position:relative;overflow:hidden;background:var(--sun);
+    padding:13px 0;border-bottom:1px solid var(--paper-line);
+  }
+  .ticker-bar.hidden{display:none;}
+  .ticker-track{
+    display:flex;gap:44px;width:max-content;
+    animation:ticker-scroll 24s linear infinite;
+  }
+  .ticker-bar:hover .ticker-track{animation-play-state:paused;}
+  @keyframes ticker-scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+  .ticker-item{
+    display:flex;align-items:center;gap:10px;white-space:nowrap;
+    font-family:'Space Mono',monospace;font-weight:700;font-size:13.5px;color:var(--ink);
+  }
+  .ticker-item .star{color:var(--magenta);font-size:15px;}
+  @media (prefers-reduced-motion: reduce){
+    .promo-track,.ticker-track{animation:none;}
+  }
+  @media (max-width:640px){
+    .promo-card{width:180px;min-height:170px;}
+  }
+
+  /* ---------- NAV ---------- */
+  .site-nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(251,246,236,.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--paper-line);
+  }
+  .nav-row{
+    display:flex;align-items:center;justify-content:space-between;
+    height:72px;gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:600;font-size:21px;flex-shrink:0;}
+  .brand-mark{width:34px;height:34px;flex-shrink:0;}
+  .nav-links{
+    display:flex;gap:20px;list-style:none;margin:0;padding:0;
+    flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
+  }
+  .nav-links::-webkit-scrollbar{display:none;}
+  .nav-links a{
+    font-size:14px;font-weight:600;color:var(--ink-soft);white-space:nowrap;
+    padding:6px 2px;border-bottom:2px solid transparent;
+    transition:color .15s, border-color .15s;
+  }
+  .nav-links a:hover{color:var(--ink);border-color:var(--coral);}
+  .nav-cta{display:flex;align-items:center;gap:12px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:700;font-size:14.5px;
+    padding:12px 22px;border-radius:999px;border:none;
+    transition:transform .15s, box-shadow .15s, background .15s;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--magenta);color:var(--white);box-shadow:0 10px 22px -10px rgba(232,67,122,.65);}
+  .btn-primary:hover{background:#D6386A;}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--paper-line);}
+  .btn-ghost:hover{border-color:var(--ink);}
+  .btn-whatsapp{background:var(--teal);color:var(--white);}
+  .btn-whatsapp:hover{background:#178D76;}
+  .nav-toggle{display:none;background:none;border:none;padding:8px;}
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px;transition:transform .2s,opacity .2s;}
+
+  /* ---------- BEAD DIVIDER ---------- */
+  .bead-divider{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    padding:44px 0 30px;
+  }
+  .bead-divider .rod{flex:0 0 auto;width:64px;height:1.5px;background:var(--paper-line);}
+  .bead-divider .beads{display:flex;gap:9px;}
+  .bead-divider .bead{width:15px;height:15px;border-radius:50%;box-shadow:inset 0 -2px 3px rgba(0,0,0,.18), 0 1px 1px rgba(0,0,0,.08);}
+  .bead-divider .label{
+    font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--paper);color:var(--ink);padding:64px 0 0;}
+  .hero-grain{
+    position:absolute;inset:0;pointer-events:none;opacity:.55;
+    background-image:radial-gradient(circle at 12% 18%, rgba(255,201,60,.22), transparent 40%),
+                      radial-gradient(circle at 85% 8%, rgba(139,95,191,.2), transparent 42%),
+                      radial-gradient(circle at 90% 85%, rgba(31,169,142,.18), transparent 40%);
+  }
+  .hero-inner{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-bottom:56px;}
+  .hero-copy h1{font-size:clamp(38px,4.6vw,60px);color:var(--ink);}
+  .hero-copy h1 em{font-style:normal;color:var(--coral);}
+  .hero-sub{font-size:17.5px;color:var(--ink-soft);max-width:480px;margin:20px 0 32px;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-stats{display:flex;gap:34px;margin-top:44px;padding-top:28px;border-top:1px solid var(--paper-line);}
+  .hero-stat b{display:block;font-family:'Fraunces',serif;font-size:26px;color:var(--ink);}
+  .hero-stat span{font-size:13px;color:var(--ink-faint);}
+
+  /* Soroban — wooden abacus styling */
+  .soroban-card{
+    background:linear-gradient(165deg,#8B5A2B,#6B4226);border:1px solid rgba(255,255,255,.08);
+    border-radius:var(--radius-l);padding:26px 22px 22px;
+    box-shadow:0 30px 60px -25px rgba(74,44,20,.55);
+  }
+  .soroban-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;}
+  .soroban-head span{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#E7CBA6;}
+  .soroban-total{font-family:'Fraunces',serif;font-size:34px;color:var(--sun);font-variant-numeric:tabular-nums;}
+  .soroban-frame{background:#4E2F17;border-radius:14px;padding:20px 16px 14px;border:1px solid rgba(255,255,255,.08);}
+  .soroban-cols{display:flex;justify-content:space-around;position:relative;}
+  .soroban-bar{position:absolute;left:0;right:0;top:96px;height:3px;background:linear-gradient(90deg, #E8C79E, #C89B6C, #A9682F, #6B4226);border-radius:2px;}
+  .soroban-col{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;z-index:1;}
+  .heaven-track{height:82px;display:flex;align-items:flex-start;padding-top:4px;}
+  .earth-track{height:112px;display:flex;flex-direction:column-reverse;gap:6px;padding-top:8px;}
+  .rod-line{position:absolute;top:6px;bottom:6px;width:2px;background:rgba(255,255,255,.14);left:50%;transform:translateX(-50%);z-index:0;}
+  .bead-btn{
+    width:34px;height:22px;border-radius:50%;border:none;padding:0;
+    box-shadow:inset 0 -3px 4px rgba(0,0,0,.28), 0 2px 3px rgba(0,0,0,.3);
+    transition:transform .18s cubic-bezier(.4,0,.2,1), filter .18s;
+    cursor:pointer;
+  }
+  .bead-btn:hover{filter:brightness(1.12);}
+  .bead-heaven{background:linear-gradient(160deg,#FFDD70,var(--sun) 60%,#D69A00);}
+  .bead-heaven.active{transform:translateY(38px);}
+  .bead-earth{background:linear-gradient(160deg,#26C4A8,var(--teal) 70%,#0F7563);}
+  .bead-earth.active{transform:translateY(-18px);}
+  .soroban-col:nth-child(3) .bead-earth{background:linear-gradient(160deg,#A47DDE,var(--violet) 70%,#5C3E8C);}
+  .soroban-col:nth-child(4) .bead-earth{background:linear-gradient(160deg,#F0708F,var(--magenta) 70%,#A62B58);}
+  .soroban-col:nth-child(5) .bead-earth{background:linear-gradient(160deg,#FF9080,var(--coral) 70%,#C43F31);}
+  .place-label{font-family:'Space Mono',monospace;font-size:10px;color:#C9A97C;letter-spacing:.06em;}
+  .soroban-foot{margin-top:16px;font-size:13px;color:#DCC1A0;text-align:center;}
+  .soroban-reset{
+    margin-top:14px;width:100%;background:rgba(255,255,255,.1);color:#F2E1C8;
+    border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:9px;font-size:13px;font-weight:600;
+  }
+  .soroban-reset:hover{background:rgba(255,255,255,.18);}
+
+
+  .section-pad{padding:96px 0;}
+  .section-pad.tight{padding:76px 0;}
+  .alt-bg{background:var(--paper-alt);}
+  .head-block{max-width:640px;margin-bottom:52px;}
+  .head-block h2{font-size:clamp(28px,3.4vw,40px);margin-top:14px;}
+  .head-block p{margin-top:16px;color:var(--ink-soft);font-size:16.5px;}
+  .head-block.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .head-block.center .eyebrow{justify-content:center;}
+  .head-block.center .eyebrow::before{display:none;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .about-copy p{color:var(--ink-soft);margin-bottom:16px;font-size:16px;}
+  .about-copy p:last-child{margin-bottom:0;}
+  .about-visual{
+    aspect-ratio:4/3;border-radius:var(--radius-l);
+    background:linear-gradient(135deg, var(--violet), var(--magenta) 55%, var(--coral));
+    position:relative;overflow:hidden;
+  }
+  .about-visual .rows{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-evenly;padding:26px;}
+  .about-visual .row{display:flex;gap:10px;}
+  .about-visual .dot{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.85);}
+  .about-visual .dot:nth-child(3n){background:rgba(255,255,255,.4);}
+
+  /* ---------- WHY CHOOSE (differentiators) ---------- */
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .why-card{
+    background:var(--white);border:1px solid var(--paper-line);border-radius:var(--radius-m);
+    padding:26px 22px;box-shadow:var(--shadow-card);
+  }
+  .why-num{font-family:'Space Mono',monospace;font-size:12px;color:var(--ink-faint);letter-spacing:.08em;}
+  .why-card h3{font-size:19px;margin:14px 0 8px;}
+  .why-card p{font-size:14.5px;color:var(--ink-soft);}
+
+  /* ---------- PROGRAMS ---------- */
+  .programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .prog-card{
+    border-radius:var(--radius-l);padding:30px 26px;position:relative;overflow:hidden;
+    color:var(--white);min-height:340px;display:flex;flex-direction:column;
+    box-shadow:var(--shadow-card);
+  }
+  .prog-card.junior{background:linear-gradient(160deg,#26B39A,var(--teal) 60%,#0F7563);}
+  .prog-card.senior{background:linear-gradient(160deg,#9B78D6,var(--violet) 60%,#5C3E8C);}
+  .prog-card.advanced{background:linear-gradient(160deg,#F0708F,var(--magenta) 60%,#A62B58);}
+  .prog-level{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.85;}
+  .prog-card h3{font-size:27px;color:var(--white);margin:10px 0 4px;}
+  .prog-age{font-size:14px;opacity:.85;margin-bottom:16px;}
+  .prog-card p.desc{font-size:14.5px;opacity:.92;margin-bottom:auto;}
+  .prog-meta{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.25);font-size:13px;}
+  .prog-cta{margin-top:16px;background:rgba(255,255,255,.16);color:var(--white);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:10px 16px;font-weight:700;font-size:13.5px;text-align:center;transition:background .15s;}
+  .prog-cta:hover{background:rgba(255,255,255,.28);}
+
+
+
+  /* ---------- ASSESSMENT STRIP ---------- */
+  .assess-strip{
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+    background:var(--ink);color:var(--paper);border-radius:var(--radius-l);padding:44px 48px;
+  }
+  .assess-strip h3{color:var(--white);font-size:26px;}
+  .assess-strip p{color:#B9C4DD;margin-top:10px;font-size:15px;}
+  .quiz-box{background:#101A30;border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-m);padding:22px;}
+  .quiz-q{font-size:14.5px;color:#C9D2E8;margin-bottom:12px;font-weight:600;}
+  .quiz-opts{display:flex;flex-direction:column;gap:9px;}
+  .quiz-opt{
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#DDE4F2;
+    padding:11px 14px;border-radius:10px;font-size:14px;text-align:left;transition:background .15s,border-color .15s;
+  }
+  .quiz-opt:hover{background:rgba(255,255,255,.1);border-color:var(--sun);}
+  .quiz-result{display:none;font-size:15px;color:var(--sun);font-weight:700;padding:6px 2px;}
+
+  /* ---------- BENEFITS ---------- */
+  .benefits-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+  .benefit-card{text-align:center;padding:8px;}
+  .benefit-icon{
+    width:64px;height:64px;border-radius:50%;margin:0 auto 16px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .benefit-card h4{font-size:16.5px;margin-bottom:8px;font-family:'Sora',sans-serif;font-weight:700;}
+  .benefit-card p{font-size:13.5px;color:var(--ink-soft);}
+
+  /* ---------- ACHIEVEMENTS ---------- */
+  .achieve-top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:40px;}
+  .stat-row{display:flex;gap:44px;flex-wrap:wrap;}
+  .stat b{display:block;font-family:'Fraunces',serif;font-size:38px;}
+  .stat span{font-size:13px;color:var(--ink-faint);font-family:'Space Mono',monospace;letter-spacing:.05em;}
+  .certs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .cert-card{
+    background:var(--white);border:1px solid var(--paper-line);border-radius:var(--radius-m);
+    padding:20px;box-shadow:var(--shadow-card);
+  }
+  .cert-ribbon{width:38px;height:38px;border-radius:8px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;}
+  .cert-card h4{font-size:15.5px;margin-bottom:6px;}
+  .cert-card p{font-size:13px;color:var(--ink-soft);}
+
+  /* ---------- GALLERY ---------- */
+  .gallery-tabs{display:flex;gap:10px;margin-bottom:28px;}
+  .gtab{padding:9px 18px;border-radius:999px;border:1.5px solid var(--paper-line);background:transparent;font-size:14px;font-weight:700;color:var(--ink-soft);}
+  .gtab.active{background:var(--ink);color:var(--white);border-color:var(--ink);}
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px;}
+  .gallery-grid.hidden{display:none;}
+  .g-tile{border-radius:var(--radius-m);position:relative;overflow:hidden;}
+  .g-tile span{position:absolute;bottom:10px;left:12px;color:#fff;font-size:12.5px;font-weight:600;text-shadow:0 1px 4px rgba(0,0,0,.4);}
+  .g-tile.big{grid-column:span 2;grid-row:span 2;}
+  .g-tile .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+  .play-circle{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;}
+
+  /* ---------- STUDENTS IN ACTION (dark video showcase) ---------- */
+  .action-section{background:var(--ink);color:var(--white);}
+  .action-section .eyebrow{color:var(--sun);}
+  .action-section h2{color:var(--white);}
+  .action-section .head-block p{color:var(--ink-faint);max-width:640px;margin-top:10px;}
+  .action-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px;}
+  .action-card{border-radius:var(--radius-m);overflow:hidden;background:#20264a;border:1px solid rgba(255,255,255,.08);}
+  .action-thumb{position:relative;aspect-ratio:4/3;background:linear-gradient(160deg,var(--teal),#0F7563);cursor:pointer;}
+  .action-card:nth-child(2) .action-thumb{background:linear-gradient(160deg,var(--coral),#C43F31);}
+  .action-card:nth-child(3) .action-thumb{background:linear-gradient(160deg,var(--violet),#5C3E8C);}
+  .action-badge{position:absolute;top:14px;left:14px;background:rgba(22,35,63,.55);color:var(--sun);font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;}
+  .action-thumb .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+  .action-info{padding:16px 18px;}
+  .action-info .a-name{font-size:15px;font-weight:700;color:var(--white);}
+  .action-info .a-meta{font-size:13px;color:var(--ink-faint);margin-top:2px;}
+
+  @media(max-width:820px){
+    .action-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .testi-card{
+    background:var(--white);border-radius:var(--radius-m);padding:28px 24px;border:1px solid var(--paper-line);
+    box-shadow:var(--shadow-card);
+  }
+  .testi-quote{font-family:'Fraunces',serif;font-size:17px;line-height:1.5;color:var(--ink);}
+  .testi-who{display:flex;align-items:center;gap:12px;margin-top:20px;}
+  .testi-avatar{width:40px;height:40px;border-radius:50%;flex-shrink:0;}
+  .testi-name{font-size:14px;font-weight:700;}
+  .testi-role{font-size:12.5px;color:var(--ink-faint);}
+  .testi-video{position:relative;border-radius:var(--radius-s,10px);overflow:hidden;aspect-ratio:16/10;margin-bottom:18px;cursor:pointer;}
+  .testi-video .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+  .testi-video .testi-duration{position:absolute;bottom:8px;right:10px;color:#fff;font-size:11px;font-weight:700;background:rgba(0,0,0,.35);padding:2px 7px;border-radius:999px;}
+
+  /* ---------- PRICING ---------- */
+  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px;align-items:start;}
+  .price-card{background:var(--white);border-radius:var(--radius-m);padding:28px 24px;border:1px solid var(--paper-line);box-shadow:var(--shadow-card);position:relative;}
+  .price-card.featured{border:1.5px solid var(--coral);box-shadow:0 1px 2px rgba(22,35,63,.06), 0 16px 34px -16px rgba(255,107,91,.35);}
+  .price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--coral);color:var(--white);font-size:12px;font-weight:700;padding:6px 16px;border-radius:999px;white-space:nowrap;}
+  .price-plan{font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);}
+  .price-amount{display:flex;align-items:baseline;gap:6px;margin-top:14px;margin-bottom:20px;}
+  .price-amount .num{font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--ink);}
+  .price-amount .per{font-size:14px;color:var(--ink-faint);}
+  .price-discount{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.02em;
+    color:var(--teal);background:rgba(31,169,142,.1);
+    padding:8px 14px;border-radius:999px;
+  }
+  .price-discount.zero{color:var(--ink-faint);background:var(--paper-alt);}
+  .price-included{margin-top:36px;padding-top:26px;border-top:1px solid var(--paper-line);}
+  .price-included-label{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px;}
+  .price-features{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px 22px;}
+  .price-features li{display:flex;align-items:flex-start;gap:9px;font-size:14.5px;color:var(--ink-soft);}
+  .price-features li .tick{color:var(--teal);font-weight:700;flex-shrink:0;margin-top:1px;}
+  .pricing-note{margin-top:26px;font-size:13.5px;color:var(--ink-faint);}
+
+  @media(max-width:820px){
+    .pricing-grid{grid-template-columns:1fr;}
+    .price-card.featured{order:-1;}
+  }
+
+  /* ---------- EVENTS ---------- */
+  .events-list{display:flex;flex-direction:column;border-top:1px solid var(--paper-line);}
+  .event-row{
+    display:grid;grid-template-columns:120px 1fr auto;gap:24px;align-items:center;
+    padding:24px 0;border-bottom:1px solid var(--paper-line);
+  }
+  .event-date{font-family:'Space Mono',monospace;}
+  .event-date b{display:block;font-size:26px;font-family:'Fraunces',serif;color:var(--magenta);}
+  .event-date span{font-size:12px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.06em;}
+  .event-row h4{font-size:18px;margin-bottom:6px;}
+  .event-row p{font-size:14px;color:var(--ink-soft);}
+  .event-tag{font-family:'Space Mono',monospace;font-size:11px;padding:5px 10px;border-radius:999px;white-space:nowrap;}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:760px;}
+  .faq-item{border-bottom:1px solid var(--paper-line);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;padding:22px 0;
+    display:flex;justify-content:space-between;align-items:center;gap:20px;
+    font-size:16.5px;font-weight:700;color:var(--ink);
+  }
+  .faq-plus{width:22px;height:22px;flex-shrink:0;position:relative;}
+  .faq-plus::before,.faq-plus::after{content:'';position:absolute;background:var(--ink);border-radius:2px;}
+  .faq-plus::before{width:14px;height:2px;top:10px;left:4px;}
+  .faq-plus::after{width:2px;height:14px;left:10px;top:4px;transition:transform .2s;}
+  .faq-item.open .faq-plus::after{transform:scaleY(0);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-a p{padding-bottom:22px;color:var(--ink-soft);font-size:15px;max-width:640px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .contact-form{display:flex;flex-direction:column;gap:16px;}
+  .field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:var(--ink-soft);}
+  .field input,.field select,.field textarea{
+    width:100%;padding:13px 14px;border-radius:10px;border:1.5px solid var(--paper-line);
+    background:var(--white);font-family:inherit;font-size:14.5px;color:var(--ink);
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--magenta);outline:none;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form-note{font-size:12.5px;color:var(--ink-faint);}
+  .form-success{display:none;background:#E4F5F0;border:1px solid var(--teal);color:#0E6B58;border-radius:10px;padding:14px 16px;font-size:14px;font-weight:600;}
+
+  .branch-locator{background:var(--white);border:1px solid var(--paper-line);border-radius:var(--radius-m);padding:26px;margin-bottom:24px;box-shadow:var(--shadow-card);}
+  .branch-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+  .branch-tab{
+    display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:999px;border:1.5px solid var(--paper-line);
+    background:var(--paper-alt);color:var(--ink-soft);font-size:13px;font-weight:700;cursor:pointer;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .branch-tab .dot{width:8px;height:8px;border-radius:50%;background:var(--branch-color,var(--coral));}
+  .branch-tab.active{background:var(--branch-color,var(--coral));color:var(--white);border-color:transparent;}
+  .branch-tab.active .dot{background:var(--white);}
+  .branch-card{display:none;flex-direction:column;gap:12px;}
+  .branch-card.active{display:flex;}
+  .branch-card h4{font-size:16.5px;color:var(--ink);}
+  .branch-row{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink-soft);}
+  .branch-row .ic{font-size:15px;flex-shrink:0;line-height:1.4;}
+  .branch-directions{
+    align-self:flex-start;margin-top:6px;font-size:13px;font-weight:700;color:var(--branch-color,var(--coral));
+    border:1.5px solid var(--branch-color,var(--coral));border-radius:999px;padding:8px 16px;transition:background .15s ease,color .15s ease;
+  }
+  .branch-directions:hover{background:var(--branch-color,var(--coral));color:var(--white);}
+  .map-block{
+    aspect-ratio:16/8;border-radius:var(--radius-m);
+    background:
+      linear-gradient(var(--paper-alt) 1px, transparent 1px) 0 0/28px 28px,
+      linear-gradient(90deg, var(--paper-alt) 1px, transparent 1px) 0 0/28px 28px,
+      var(--white);
+    border:1px solid var(--paper-line);position:relative;overflow:hidden;
+  }
+  .map-marker{
+    position:absolute;top:44%;left:52%;transform:translate(-50%,-100%);
+    display:flex;flex-direction:column;align-items:center;transition:left .4s ease, top .4s ease;
+  }
+  .map-pin{width:34px;height:34px;animation:pinBounce 1.8s ease-in-out infinite;}
+  @keyframes pinBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+  .map-label{
+    margin-top:2px;font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;
+    background:var(--ink);color:var(--white);padding:3px 9px;border-radius:999px;white-space:nowrap;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#C9D2E8;padding:64px 0 28px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.1);}
+  .foot-brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:var(--white);margin-bottom:14px;}
+  .foot-grid p{font-size:14px;color:#93A1C2;max-width:280px;}
+  .foot-col h5{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#7C89A8;margin-bottom:16px;}
+  .foot-col a{display:block;font-size:14.5px;color:#C9D2E8;margin-bottom:11px;}
+  .foot-col a:hover{color:var(--sun);}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:12.5px;color:#7C89A8;flex-wrap:wrap;gap:12px;}
+  .admin-note{font-size:12.5px;color:#7C89A8;}
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-whatsapp{
+    position:fixed;bottom:26px;right:26px;z-index:200;
+    width:60px;height:60px;border-radius:50%;background:var(--teal);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 14px 30px -10px rgba(31,169,142,.7);
+    border:none;color:white;
+  }
+  .float-whatsapp:hover{transform:translateY(-3px) scale(1.03);}
+  .float-pulse{position:absolute;inset:0;border-radius:50%;background:var(--teal);animation:pulse 2.2s infinite;}
+  @keyframes pulse{0%{transform:scale(1);opacity:.55;}100%{transform:scale(1.7);opacity:0;}}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .nav-links{
+      display:none;position:absolute;top:72px;left:0;right:0;
+      flex-direction:column;gap:2px;background:var(--paper);
+      border-bottom:1px solid var(--paper-line);padding:10px 28px 18px;
+      max-height:calc(100vh - 72px);overflow-y:auto;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:12px 2px;border-bottom:1px solid var(--paper-line);}
+    .nav-toggle{display:block;}
+    .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .nav-toggle.open span:nth-child(2){opacity:0;}
+    .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .hero-inner{grid-template-columns:1fr;}
+    .about-grid,.contact-grid,.assess-strip{grid-template-columns:1fr;}
+    .why-grid,.certs-grid{grid-template-columns:repeat(2,1fr);}
+    .programs-grid,.testi-grid{grid-template-columns:1fr;}
+    .benefits-grid{grid-template-columns:repeat(2,1fr);}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .stat-row{gap:28px;}
+    .field-row{grid-template-columns:1fr;}
+    .event-row{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .float-pulse{animation:none;}
+    *{transition-duration:.01ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="site-nav">
+  <div class="wrap nav-row">
+    <a href="#top" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+        <rect width="40" height="40" rx="10" fill="#16233F"></rect>
+        <line x1="9" y1="14" x2="9" y2="30" stroke="#FFC93C" stroke-width="2"></line>
+        <line x1="20" y1="10" x2="20" y2="30" stroke="#FF6B5B" stroke-width="2"></line>
+        <line x1="31" y1="14" x2="31" y2="30" stroke="#1FA98E" stroke-width="2"></line>
+        <circle cx="9" cy="18" r="3.2" fill="#FFC93C"></circle>
+        <circle cx="20" cy="15" r="3.2" fill="#FF6B5B"></circle>
+        <circle cx="20" cy="23" r="3.2" fill="#FF6B5B"></circle>
+        <circle cx="31" cy="20" r="3.2" fill="#1FA98E"></circle>
+      </svg>
+      SIP Abacus
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#why">Why SIP</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#students-in-action">Students in Action</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-grain"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">SIP Abacus · Mental Arithmetic Program</div>
+        <h1>Unlock Your Child's <em>Brain Power</em></h1>
+        <p class="hero-sub">A structured abacus &amp; mental math program for ages 5–14 — building concentration, memory, and calculation speed, one bead at a time.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Book a FREE Demo Class</a>
+          <a href="https://wa.me/919999999999?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20SIP%20Abacus" target="_blank" rel="noopener" class="btn btn-whatsapp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.63 1.44 5.15L2 22l5.09-1.53a9.9 9.9 0 0 0 4.95 1.31h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.06c-.24.68-1.2 1.25-1.96 1.41-.52.11-1.2.2-3.49-.75-2.93-1.21-4.82-4.16-4.97-4.35-.14-.2-1.19-1.58-1.19-3.02 0-1.43.75-2.14 1.02-2.43.24-.27.53-.34.71-.34.18 0 .35 0 .5.01.16.01.38-.06.59.45.24.58.81 2 .88 2.15.07.14.11.31.02.5-.09.18-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.28.28-.12.56.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.2.68-.79.86-1.06.18-.27.36-.23.6-.14.24.09 1.55.73 1.82.86.27.14.44.2.51.32.07.11.07.65-.17 1.32Z"></path></svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><b>10,000+</b><span>Students trained</span></div>
+          <div class="hero-stat"><b>40+</b><span>Learning centres</span></div>
+          <div class="hero-stat"><b>4.9/5</b><span>Parent rating</span></div>
+        </div>
+      </div>
+
+      <div class="soroban-card">
+        <div class="soroban-head">
+          <span>Try the abacus →</span>
+          <div class="soroban-total" id="soroban-total">0</div>
+        </div>
+        <div class="soroban-frame">
+          <div class="soroban-cols">
+            <div class="soroban-bar"></div>
+            <div class="soroban-col" data-place="1000">
+              <div class="rod-line"></div>
+              <div class="heaven-track"><button class="bead-btn bead-heaven" data-value="5" aria-label="Thousands heaven bead"></button></div>
+              <div class="earth-track">
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Thousands earth bead 1"></button>
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Thousands earth bead 2"></button>
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Thousands earth bead 3"></button>
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Thousands earth bead 4"></button>
+              </div>
+              <span class="place-label">1000s</span>
+            </div>
+            <div class="soroban-col" data-place="100">
+              <div class="rod-line"></div>
+              <div class="heaven-track"><button class="bead-btn bead-heaven" data-value="5" aria-label="Hundreds heaven bead"></button></div>
+              <div class="earth-track">
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Hundreds earth bead 1"></button>
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Hundreds earth bead 2"></button>
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Hundreds earth bead 3"></button>
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Hundreds earth bead 4"></button>
+              </div>
+              <span class="place-label">100s</span>
+            </div>
+            <div class="soroban-col" data-place="10">
+              <div class="rod-line"></div>
+              <div class="heaven-track"><button class="bead-btn bead-heaven" data-value="5" aria-label="Tens heaven bead"></button></div>
+              <div class="earth-track">
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Tens earth bead 1"></button>
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Tens earth bead 2"></button>
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Tens earth bead 3"></button>
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Tens earth bead 4"></button>
+              </div>
+              <span class="place-label">10s</span>
+            </div>
+            <div class="soroban-col" data-place="1">
+              <div class="rod-line"></div>
+              <div class="heaven-track"><button class="bead-btn bead-heaven" data-value="5" aria-label="Ones heaven bead"></button></div>
+              <div class="earth-track">
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Ones earth bead 1"></button>
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Ones earth bead 2"></button>
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Ones earth bead 3"></button>
+                <button class="bead-btn bead-earth" data-value="1" aria-label="Ones earth bead 4"></button>
+              </div>
+              <span class="place-label">1s</span>
+            </div>
+          </div>
+        </div>
+        <p class="soroban-foot">Click beads to move them toward the bar — just like a real soroban.</p>
+        <button class="soroban-reset" id="soroban-reset" type="button">Reset abacus</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= PROMO BANNER (scrolling announcements) ================= -->
+<div class="promo-banner" id="promo-banner">
+  <button class="promo-close" id="promo-close" aria-label="Dismiss announcements">✕</button>
+  <div class="promo-fade left"></div>
+  <div class="promo-fade right"></div>
+  <div class="promo-track" id="promo-track">
+    <div class="promo-card">
+      <span class="promo-flag live"><span class="live-dot"></span> NOW RUNNING</span>
+      <span class="promo-tag">Tournament</span>
+      <p>[Tournament name] · [date] · all levels</p>
+    </div>
+    <div class="promo-card">
+      <span class="promo-flag">New Batch</span>
+      <span class="promo-tag">New Batch</span>
+      <p>New batch starting [date] at Yelahanka New Town</p>
+    </div>
+    <div class="promo-card">
+      <span class="promo-flag">Offer</span>
+      <span class="promo-tag">Offer</span>
+      <p>[Offer name] — [X]% off registration this month</p>
+    </div>
+    <div class="promo-card">
+      <span class="promo-flag">Tournament</span>
+      <span class="promo-tag">Tournament</span>
+      <p>[Tournament name] · [date] · all levels</p>
+    </div>
+    <div class="promo-card">
+      <span class="promo-flag">New Batch</span>
+      <span class="promo-tag">New Batch</span>
+      <p>New batch starting [date] at Yelahanka New Town</p>
+    </div>
+    <!-- duplicate set for seamless infinite scroll -->
+    <div class="promo-card" aria-hidden="true">
+      <span class="promo-flag live"><span class="live-dot"></span> NOW RUNNING</span>
+      <span class="promo-tag">Tournament</span>
+      <p>[Tournament name] · [date] · all levels</p>
+    </div>
+    <div class="promo-card" aria-hidden="true">
+      <span class="promo-flag">New Batch</span>
+      <span class="promo-tag">New Batch</span>
+      <p>New batch starting [date] at Yelahanka New Town</p>
+    </div>
+    <div class="promo-card" aria-hidden="true">
+      <span class="promo-flag">Offer</span>
+      <span class="promo-tag">Offer</span>
+      <p>[Offer name] — [X]% off registration this month</p>
+    </div>
+    <div class="promo-card" aria-hidden="true">
+      <span class="promo-flag">Tournament</span>
+      <span class="promo-tag">Tournament</span>
+      <p>[Tournament name] · [date] · all levels</p>
+    </div>
+    <div class="promo-card" aria-hidden="true">
+      <span class="promo-flag">New Batch</span>
+      <span class="promo-tag">New Batch</span>
+      <p>New batch starting [date] at Yelahanka New Town</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= TICKER (continuous feature marquee) ================= -->
+<div class="ticker-bar" id="ticker-bar">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-item"><span class="star">★</span> Small batches, 8–10 students</span>
+    <span class="ticker-item"><span class="star">★</span> Free gamified practice website</span>
+    <span class="ticker-item"><span class="star">★</span> Monthly report cards</span>
+    <span class="ticker-item"><span class="star">★</span> Free demo class available now</span>
+    <span class="ticker-item"><span class="star">★</span> 90 min × 2 classes a week</span>
+    <!-- duplicate set for seamless infinite scroll -->
+    <span class="ticker-item" aria-hidden="true"><span class="star">★</span> Small batches, 8–10 students</span>
+    <span class="ticker-item" aria-hidden="true"><span class="star">★</span> Free gamified practice website</span>
+    <span class="ticker-item" aria-hidden="true"><span class="star">★</span> Monthly report cards</span>
+    <span class="ticker-item" aria-hidden="true"><span class="star">★</span> Free demo class available now</span>
+    <span class="ticker-item" aria-hidden="true"><span class="star">★</span> 90 min × 2 classes a week</span>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="section-pad">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="rows">
+          <div class="row"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="row"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="row"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+          <div class="row"><div class="dot"></div><div class="dot"></div></div>
+        </div>
+      </div>
+      <div class="about-copy">
+        <div class="eyebrow">About SIP Abacus</div>
+        <h2 style="margin-top:14px;font-size:clamp(26px,3vw,36px);">A proven method, taught the SIP way</h2>
+        <p>SIP Abacus is a structured mental arithmetic program built around the centuries-old soroban abacus. Children first learn to calculate physically on the beads, then progress to visualising the abacus in their mind — solving multi-digit problems mentally, without a calculator.</p>
+        <p>Our curriculum is delivered in small batches by certified trainers across 8 progressive levels, with regular assessments so parents can track real, measurable growth in speed and accuracy.</p>
+        <p>Beyond arithmetic, the whole-brain engagement of abacus training is designed to sharpen focus, memory, and creative problem-solving — skills that carry over into every subject at school.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="bead-divider" aria-hidden="true">
+    <div class="rod"></div>
+    <div class="beads">
+      <div class="bead" style="background:var(--coral)"></div>
+      <div class="bead" style="background:var(--sun)"></div>
+      <div class="bead" style="background:var(--teal)"></div>
+      <div class="bead" style="background:var(--violet)"></div>
+    </div>
+    <div class="label">4 reasons</div>
+    <div class="beads">
+      <div class="bead" style="background:var(--violet)"></div>
+      <div class="bead" style="background:var(--teal)"></div>
+      <div class="bead" style="background:var(--sun)"></div>
+      <div class="bead" style="background:var(--coral)"></div>
+    </div>
+    <div class="rod"></div>
+  </div>
+</div>
+
+<!-- ================= WHY CHOOSE ================= -->
+<section id="why" class="section-pad tight">
+  <div class="wrap">
+    <div class="head-block">
+      <div class="eyebrow">Why Choose SIP?</div>
+      <h2>What sets our program apart</h2>
+      <p>Four things parents tell us they value most when they compare us to other abacus programs.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h3>Certified trainers</h3>
+        <p>Every instructor completes SIP's internal certification and yearly refresher training before leading a batch.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h3>Small batch sizes</h3>
+        <p>Capped at 10 students per batch so every child gets individual correction and pacing.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h3>8-level curriculum</h3>
+        <p>A clear progression from physical bead counting to full mental visualisation, with a test at every level.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <h3>Flexible formats</h3>
+        <p>Choose in-centre or online batches, with weekday and weekend timings to fit school schedules.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAMS ================= -->
+<section id="programs" class="section-pad alt-bg">
+  <div class="wrap">
+    <div class="head-block">
+      <div class="eyebrow">Programs</div>
+      <h2>A track for every age</h2>
+      <p>Three progressive tracks, each broken into levels so children move at a pace that suits them.</p>
+    </div>
+
+    <div class="programs-grid">
+      <div class="prog-card junior">
+        <div class="prog-level">Junior</div>
+        <h3>Junior Track</h3>
+        <div class="prog-age">Ages 5 – 7</div>
+        <p class="desc">Introduces the abacus through play — number recognition, simple addition and subtraction, and finger dexterity drills.</p>
+        <div class="prog-meta"><span>Levels 1–2</span><span>60 min / week</span></div>
+        <a href="#contact" class="prog-cta">Book Junior demo</a>
+      </div>
+      <div class="prog-card senior">
+        <div class="prog-level">Senior</div>
+        <h3>Senior Track</h3>
+        <div class="prog-age">Ages 8 – 10</div>
+        <p class="desc">Builds speed and accuracy across all four operations, and begins the shift from physical beads to mental visualisation.</p>
+        <div class="prog-meta"><span>Levels 3–5</span><span>75 min / week</span></div>
+        <a href="#contact" class="prog-cta">Book Senior demo</a>
+      </div>
+      <div class="prog-card advanced">
+        <div class="prog-level">Advanced</div>
+        <h3>Advanced Track</h3>
+        <div class="prog-age">Ages 11 – 14</div>
+        <p class="desc">Full mental math mastery — multi-digit calculations, square roots, and competition-level speed challenges.</p>
+        <div class="prog-meta"><span>Levels 6–8</span><span>90 min / week</span></div>
+        <a href="#contact" class="prog-cta">Book Advanced demo</a>
+      </div>
+    </div>
+
+    <div class="assess-strip" style="margin-top:56px;">
+      <div>
+        <div class="eyebrow" style="color:var(--sun);">Free Assessment</div>
+        <h3 style="margin-top:12px;">Not sure which track fits your child?</h3>
+        <p>Answer 2 quick questions and we'll suggest a starting level — takes about 30 seconds.</p>
+      </div>
+      <div class="quiz-box" id="quiz-box">
+        <div id="quiz-step-1">
+          <div class="quiz-q">1. How old is your child?</div>
+          <div class="quiz-opts">
+            <button class="quiz-opt" data-track="Junior">5 – 7 years</button>
+            <button class="quiz-opt" data-track="Senior">8 – 10 years</button>
+            <button class="quiz-opt" data-track="Advanced">11 – 14 years</button>
+          </div>
+        </div>
+        <div class="quiz-result" id="quiz-result" style="display: none;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BENEFITS ================= -->
+<section id="benefits" class="section-pad">
+  <div class="wrap">
+    <div class="head-block center" style="margin-left:auto;margin-right:auto;">
+      <div class="eyebrow">Benefits</div>
+      <h2>Five ways abacus training helps your child</h2>
+    </div>
+    <div class="bead-divider" aria-hidden="true" style="padding-top:0;">
+      <div class="rod"></div>
+      <div class="beads">
+        <div class="bead" style="background:var(--coral)"></div>
+        <div class="bead" style="background:var(--sun)"></div>
+        <div class="bead" style="background:var(--teal)"></div>
+        <div class="bead" style="background:var(--violet)"></div>
+        <div class="bead" style="background:var(--magenta)"></div>
+      </div>
+      <div class="rod"></div>
+    </div>
+    <div class="benefits-grid" style="margin-top:36px;">
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:#FFEBD9;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FF6B5B" stroke-width="2"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3"></circle></svg>
+        </div>
+        <h4>Concentration</h4>
+        <p>Sustained focus on rapid bead sequences trains longer attention spans.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:#FFF3D6;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E0A400" stroke-width="2"><path d="M12 2a7 7 0 0 0-4 12.7V19a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4.3A7 7 0 0 0 12 2Z"></path><line x1="9" y1="22" x2="15" y2="22"></line></svg>
+        </div>
+        <h4>Memory</h4>
+        <p>Visualising the abacus builds a strong photographic working memory.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:#E1F5EE;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1FA98E" stroke-width="2"><path d="M20 6 9 17l-5-5"></path></svg>
+        </div>
+        <h4>Confidence</h4>
+        <p>Solving problems faster than classmates builds real self-belief in math.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:#EEE5F8;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8B5FBF" stroke-width="2"><path d="M13 2 3 14h7l-1 8 11-14h-7z"></path></svg>
+        </div>
+        <h4>Faster Calculations</h4>
+        <p>Mental math replaces slow, written methods with instant recall.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon" style="background:#FCE4EC;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E8437A" stroke-width="2"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path><circle cx="12" cy="12" r="4"></circle></svg>
+        </div>
+        <h4>Creativity</h4>
+        <p>Whole-brain engagement supports imaginative, flexible thinking beyond math.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACHIEVEMENTS ================= -->
+<section id="achievements" class="section-pad alt-bg">
+  <div class="wrap">
+    <div class="achieve-top">
+      <div class="head-block" style="margin-bottom:0;">
+        <div class="eyebrow">Student Achievements</div>
+        <h2>Results our students are proud of</h2>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b>10,000+</b><span>STUDENTS TRAINED</span></div>
+        <div class="stat"><b>320+</b><span>OLYMPIAD WINNERS</span></div>
+        <div class="stat"><b>98%</b><span>PARENT SATISFACTION</span></div>
+      </div>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-ribbon" style="background:#FFEBD9;">🏆</div>
+        <h4>National Abacus Olympiad</h4>
+        <p>1st place — Advanced category, 2026</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ribbon" style="background:#E1F5EE;">🥈</div>
+        <h4>State Mental Math Meet</h4>
+        <p>2nd place — Senior category, 2026</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ribbon" style="background:#EEE5F8;">⭐</div>
+        <h4>Speed Calculation Challenge</h4>
+        <p>Fastest 2-digit round — Junior category</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-ribbon" style="background:#FCE4EC;">🎓</div>
+        <h4>Level 8 Graduation</h4>
+        <p>42 students completed the full 8-level curriculum</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section id="gallery" class="section-pad">
+  <div class="wrap">
+    <div class="head-block">
+      <div class="eyebrow">Gallery</div>
+      <h2>Life inside a SIP Abacus classroom</h2>
+    </div>
+    <div class="gallery-tabs">
+      <button class="gtab" data-tab="photos">Photos</button>
+      <button class="gtab active" data-tab="videos">Videos</button>
+    </div>
+    <div class="gallery-grid hidden" id="gallery-photos">
+      <div class="g-tile big" style="background:linear-gradient(160deg,var(--teal),#0F7563);"><span>Batch practice session</span></div>
+      <div class="g-tile" style="background:linear-gradient(160deg,var(--coral),#C43F31);"><span>Olympiad day</span></div>
+      <div class="g-tile" style="background:linear-gradient(160deg,var(--sun),#D69A00);"><span>Junior orientation</span></div>
+      <div class="g-tile" style="background:linear-gradient(160deg,var(--violet),#5C3E8C);"><span>Level 8 graduation</span></div>
+      <div class="g-tile" style="background:linear-gradient(160deg,var(--magenta),#A62B58);"><span>Parent open house</span></div>
+      <div class="g-tile" style="background:linear-gradient(160deg,#26B39A,var(--teal));"><span>Speed round finals</span></div>
+    </div>
+    <div class="gallery-grid" id="gallery-videos">
+      <div class="g-tile big" style="background:linear-gradient(160deg,#2E3A5C,var(--ink));"><div class="play"><div class="play-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div><span>Program walkthrough</span></div>
+      <div class="g-tile" style="background:linear-gradient(160deg,#2E3A5C,var(--ink));"><div class="play"><div class="play-circle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div><span>Student demo</span></div>
+      <div class="g-tile" style="background:linear-gradient(160deg,#2E3A5C,var(--ink));"><div class="play"><div class="play-circle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div><span>Parent interview</span></div>
+      <div class="g-tile" style="background:linear-gradient(160deg,#2E3A5C,var(--ink));"><div class="play"><div class="play-circle"><svg width="16" height="16" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div><span>Olympiad highlights</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STUDENTS IN ACTION ================= -->
+<section id="students-in-action" class="section-pad action-section">
+  <div class="wrap">
+    <div class="head-block">
+      <div class="eyebrow">See our students in action</div>
+      <h2>Real kids, real speed.</h2>
+      <p>Watch what a few months on the abacus actually looks like — tap any clip to play. Replace these placeholders with your own demo videos.</p>
+    </div>
+    <div class="action-grid">
+      <div class="action-card">
+        <div class="action-thumb">
+          <span class="action-badge">Demo clip</span>
+          <div class="play"><div class="play-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div>
+        </div>
+        <div class="action-info">
+          <div class="a-name">[Student name]</div>
+          <div class="a-meta">Foundation level · age [X]</div>
+        </div>
+      </div>
+      <div class="action-card">
+        <div class="action-thumb">
+          <span class="action-badge">Demo clip</span>
+          <div class="play"><div class="play-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div>
+        </div>
+        <div class="action-info">
+          <div class="a-name">[Student name]</div>
+          <div class="a-meta">Advanced level · age [X]</div>
+        </div>
+      </div>
+      <div class="action-card">
+        <div class="action-thumb">
+          <span class="action-badge">Demo clip</span>
+          <div class="play"><div class="play-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div>
+        </div>
+        <div class="action-info">
+          <div class="a-name">[Student name]</div>
+          <div class="a-meta">Junior level · age [X]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section id="testimonials" class="section-pad alt-bg">
+  <div class="wrap">
+    <div class="head-block">
+      <div class="eyebrow">Parent Testimonials</div>
+      <h2>What parents are saying</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-video" style="background:linear-gradient(160deg,var(--coral),#C43F31);">
+          <div class="play"><div class="play-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div>
+          <span class="testi-duration">0:42</span>
+        </div>
+        <p class="testi-quote">"My daughter used to dread math homework. Six months into SIP Abacus, she's the one asking for extra problems."</p>
+        <div class="testi-who">
+          <div class="testi-avatar" style="background:var(--coral);"></div>
+          <div><div class="testi-name">Anita R.</div><div class="testi-role">Parent, Junior batch</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-video" style="background:linear-gradient(160deg,var(--teal),#0F7563);">
+          <div class="play"><div class="play-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div>
+          <span class="testi-duration">0:58</span>
+        </div>
+        <p class="testi-quote">"The small batch size makes a real difference — the trainer knows exactly where my son struggles and adjusts on the spot."</p>
+        <div class="testi-who">
+          <div class="testi-avatar" style="background:var(--teal);"></div>
+          <div><div class="testi-name">Karthik M.</div><div class="testi-role">Parent, Senior batch</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-video" style="background:linear-gradient(160deg,var(--violet),#5C3E8C);">
+          <div class="play"><div class="play-circle"><svg width="18" height="18" viewBox="0 0 24 24" fill="#16233F"><path d="M8 5v14l11-7z"></path></svg></div></div>
+          <span class="testi-duration">1:05</span>
+        </div>
+        <p class="testi-quote">"What surprised us most wasn't the math speed — it was how much calmer and more focused she became overall."</p>
+        <div class="testi-who">
+          <div class="testi-avatar" style="background:var(--violet);"></div>
+          <div><div class="testi-name">Priya S.</div><div class="testi-role">Parent, Advanced batch</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section id="pricing" class="section-pad">
+  <div class="wrap">
+    <div class="head-block">
+      <div class="eyebrow">Getting Started</div>
+      <h2>From a free demo to your child's first batch.</h2>
+      <p>Update the amounts below to match your Yelahanka New Town pricing.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-plan">Monthly</div>
+        <div class="price-amount"><span class="num">₹[amount]</span><span class="per">/ month</span></div>
+        <span class="price-discount zero">No discount · pay as you go</span>
+      </div>
+      <div class="price-card featured">
+        <span class="price-badge">Best value</span>
+        <div class="price-plan">2 Payments (6 Months)</div>
+        <div class="price-amount"><span class="num">₹[amount]</span><span class="per">/ instalment</span></div>
+        <span class="price-discount">5% off the monthly rate</span>
+      </div>
+      <div class="price-card">
+        <div class="price-plan">1 Time Payment (12 Months)</div>
+        <div class="price-amount"><span class="num">₹[amount]</span><span class="per">/ year</span></div>
+        <span class="price-discount">10% off the monthly rate</span>
+      </div>
+    </div>
+    <div class="price-included">
+      <div class="price-included-label">Every plan includes</div>
+      <ul class="price-features">
+        <li><span class="tick">✓</span> Two 90-min classes weekly</li>
+        <li><span class="tick">✓</span> Free practice website</li>
+        <li><span class="tick">✓</span> Free 1:1 catch-up classes</li>
+        <li><span class="tick">✓</span> 2% extra off any plan when paid online</li>
+      </ul>
+    </div>
+    <p class="pricing-note">One-time registration fee of ₹[amount] covers the abacus kit, bag and t-shirt. Level books purchased separately as your child progresses.</p>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" class="section-pad alt-bg">
+  <div class="wrap">
+    <div class="head-block">
+      <div class="eyebrow">FAQ</div>
+      <h2>Common questions from parents</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q">What age can my child start? <span class="faq-plus"></span></button>
+        <div class="faq-a" style="max-height: 70px;"><p>We accept students from age 5 onward. Our Junior track is designed specifically for first-time learners aged 5–7.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long is each level? <span class="faq-plus"></span></button>
+        <div class="faq-a"><p>Most students complete a level in 3–4 months with weekly classes, though pace varies by child and practice frequency.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do you offer online classes? <span class="faq-plus"></span></button>
+        <div class="faq-a"><p>Yes — every track is available online with a physical abacus kit shipped to your home, or in-centre at any of our branches.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is the free demo class really free?<span class="faq-plus"></span></button>
+        <div class="faq-a"><p>Yes, with no obligation to enrol. It's a full-length class so your child can experience the teaching style firsthand.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How much practice is needed at home?<span class="faq-plus"></span></button>
+        <div class="faq-a"><p>We recommend 10–15 minutes of daily practice using the take-home worksheet pack included with every level.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="section-pad">
+  <div class="wrap">
+    <div class="head-block">
+      <div class="eyebrow">Contact &amp; Book a Demo</div>
+      <h2>Book your child's free demo class</h2>
+      <p>Fill in the form and our team will call you within 24 hours to schedule a slot.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form" id="demo-form">
+        <div class="field-row">
+          <div class="field">
+            <label for="parent-name">Parent name</label>
+            <input id="parent-name" type="text" required="" placeholder="Your full name">
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input id="phone" type="tel" required="" placeholder="10-digit mobile number">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="child-age">Child's age</label>
+            <input id="child-age" type="number" min="4" max="16" required="" placeholder="e.g. 8">
+          </div>
+          <div class="field">
+            <label for="track">Preferred track</label>
+            <select id="track">
+              <option>Not sure — please recommend</option>
+              <option>Junior (5–7)</option>
+              <option>Senior (8–10)</option>
+              <option>Advanced (11–14)</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="branch">Preferred branch</label>
+          <select id="branch">
+            <option>Indiranagar, Bengaluru</option>
+            <option>Whitefield, Bengaluru</option>
+            <option>HSR Layout, Bengaluru</option>
+            <option>Online</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message (optional)</label>
+          <textarea id="message" rows="3" placeholder="Anything you&#39;d like us to know"></textarea>
+        </div>
+        <p class="form-note">By submitting, you agree to be contacted by phone or WhatsApp regarding your demo class.</p>
+        <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Book Free Demo Class</button>
+        <div class="form-success" id="form-success">Thanks! Your demo request has been received — we'll call you within 24 hours.</div>
+      </form>
+
+      <div>
+        <div class="branch-locator">
+          <div class="eyebrow" style="margin-bottom:14px;">Branch Locator</div>
+          <div class="branch-tabs" id="branch-tabs">
+            <button class="branch-tab active" data-branch="indiranagar" style="--branch-color:var(--coral);" type="button"><span class="dot"></span>Indiranagar</button>
+            <button class="branch-tab" data-branch="whitefield" style="--branch-color:var(--sky);" type="button"><span class="dot"></span>Whitefield</button>
+            <button class="branch-tab" data-branch="hsr" style="--branch-color:var(--violet);" type="button"><span class="dot"></span>HSR Layout</button>
+          </div>
+          <div class="branch-card active" data-branch="indiranagar">
+            <h4>SIP Abacus — Indiranagar</h4>
+            <div class="branch-row"><span class="ic">📍</span><span>100 Ft Road, Indiranagar, Bengaluru</span></div>
+            <div class="branch-row"><span class="ic">🕒</span><span>Mon–Sat, 3pm–7pm</span></div>
+            <div class="branch-row"><span class="ic">📞</span><span>+91 99999 99999</span></div>
+            <a href="https://www.google.com/maps/search/?api=1&query=100+Ft+Road+Indiranagar+Bengaluru" target="_blank" rel="noopener" class="branch-directions" style="--branch-color:var(--coral);">Get directions →</a>
+          </div>
+          <div class="branch-card" data-branch="whitefield">
+            <h4>SIP Abacus — Whitefield</h4>
+            <div class="branch-row"><span class="ic">📍</span><span>ITPL Main Road, Whitefield, Bengaluru</span></div>
+            <div class="branch-row"><span class="ic">🕒</span><span>Mon–Sat, 3pm–7pm</span></div>
+            <div class="branch-row"><span class="ic">📞</span><span>+91 99999 88888</span></div>
+            <a href="https://www.google.com/maps/search/?api=1&query=ITPL+Main+Road+Whitefield+Bengaluru" target="_blank" rel="noopener" class="branch-directions" style="--branch-color:var(--sky);">Get directions →</a>
+          </div>
+          <div class="branch-card" data-branch="hsr">
+            <h4>SIP Abacus — HSR Layout</h4>
+            <div class="branch-row"><span class="ic">📍</span><span>27th Main, HSR Layout, Bengaluru</span></div>
+            <div class="branch-row"><span class="ic">🕒</span><span>Mon–Sat, 3pm–7pm</span></div>
+            <div class="branch-row"><span class="ic">📞</span><span>+91 99999 77777</span></div>
+            <a href="https://www.google.com/maps/search/?api=1&query=27th+Main+HSR+Layout+Bengaluru" target="_blank" rel="noopener" class="branch-directions" style="--branch-color:var(--violet);">Get directions →</a>
+          </div>
+        </div>
+        <div class="map-block">
+          <div class="map-marker" id="map-marker" style="left:52%;top:44%;">
+            <svg class="map-pin" viewBox="0 0 24 24" fill="none" id="map-pin-svg"><path d="M12 2C8 2 5 5 5 9c0 5.5 7 13 7 13s7-7.5 7-13c0-4-3-7-7-7Z" fill="#E8437A"></path><circle cx="12" cy="9" r="2.6" fill="#FBF6EC"></circle></svg>
+            <span class="map-label" id="map-label">Indiranagar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg width="30" height="30" viewBox="0 0 40 40" fill="none">
+            <rect width="40" height="40" rx="10" fill="#FBF6EC" fill-opacity=".08"></rect>
+            <line x1="9" y1="14" x2="9" y2="30" stroke="#FFC93C" stroke-width="2"></line>
+            <line x1="20" y1="10" x2="20" y2="30" stroke="#FF6B5B" stroke-width="2"></line>
+            <line x1="31" y1="14" x2="31" y2="30" stroke="#1FA98E" stroke-width="2"></line>
+            <circle cx="9" cy="18" r="3" fill="#FFC93C"></circle><circle cx="20" cy="15" r="3" fill="#FF6B5B"></circle><circle cx="20" cy="23" r="3" fill="#FF6B5B"></circle><circle cx="31" cy="20" r="3" fill="#1FA98E"></circle>
+          </svg>
+          SIP Abacus
+        </div>
+        <p>A structured abacus &amp; mental arithmetic program helping children build concentration, memory, and calculation speed.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="#about">About SIP</a>
+        <a href="#programs">Programs</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+      <div class="foot-col">
+        <h5>Support</h5>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact us</a>
+        <a href="#testimonials">Testimonials</a>
+      </div>
+      <div class="foot-col">
+        <h5>Get in touch</h5>
+        <a href="tel:+919999999999">+91 99999 99999</a>
+        <a href="mailto:hello@sipabacus.example">hello@sipabacus.example</a>
+        <a href="https://wa.me/919999999999" target="_blank" rel="noopener">WhatsApp us</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 SIP Abacus. All rights reserved.</span>
+      <span class="admin-note">Centre staff — admin login coming soon</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= FLOATING WHATSAPP ================= -->
+<a class="float-whatsapp" href="https://wa.me/919999999999?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20class" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <div class="float-pulse"></div>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="position:relative;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.63 1.44 5.15L2 22l5.09-1.53a9.9 9.9 0 0 0 4.95 1.31h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.06c-.24.68-1.2 1.25-1.96 1.41-.52.11-1.2.2-3.49-.75-2.93-1.21-4.82-4.16-4.97-4.35-.14-.2-1.19-1.58-1.19-3.02 0-1.43.75-2.14 1.02-2.43.24-.27.53-.34.71-.34.18 0 .35 0 .5.01.16.01.38-.06.59.45.24.58.81 2 .88 2.15.07.14.11.31.02.5-.09.18-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.28.28-.12.56.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.2.68-.79.86-1.06.18-.27.36-.23.6-.14.24.09 1.55.73 1.82.86.27.14.44.2.51.32.07.11.07.65-.17 1.32Z"></path></svg>
+</a>
+
+<script>
+  // ---- Soroban interactive abacus ----
+  (function(){
+    const cols = document.querySelectorAll('.soroban-col');
+    const totalEl = document.getElementById('soroban-total');
+    function compute(){
+      let total = 0;
+      cols.forEach(col=>{
+        const place = parseInt(col.dataset.place,10);
+        let val = 0;
+        col.querySelectorAll('.bead-heaven.active').forEach(()=>val+=5);
+        col.querySelectorAll('.bead-earth.active').forEach(()=>val+=1);
+        total += val*place;
+      });
+      totalEl.textContent = total.toLocaleString('en-IN');
+    }
+    // Heaven beads: simple single-bead toggle
+    document.querySelectorAll('.bead-heaven').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        btn.classList.toggle('active');
+        compute();
+      });
+    });
+    // Earth beads: must move as a contiguous group toward the bar, or they'll overlap
+    document.querySelectorAll('.earth-track').forEach(track=>{
+      // visual order nearest-the-bar first (DOM is reversed by column-reverse)
+      const visual = Array.from(track.querySelectorAll('.bead-earth')).reverse();
+      visual.forEach((btn, idx)=>{
+        btn.addEventListener('click', ()=>{
+          const wasActive = btn.classList.contains('active');
+          const newCount = wasActive ? idx : idx + 1;
+          visual.forEach((b,i)=> b.classList.toggle('active', i < newCount));
+          compute();
+        });
+      });
+    });
+    document.getElementById('soroban-reset').addEventListener('click', ()=>{
+      document.querySelectorAll('.bead-btn.active').forEach(b=>b.classList.remove('active'));
+      compute();
+    });
+  })();
+
+  // ---- Nav mobile toggle ----
+  (function(){
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    if(!toggle || !links) return;
+    toggle.addEventListener('click', ()=>{
+      const isOpen = links.classList.toggle('open');
+      toggle.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    links.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', ()=>{
+        links.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+      });
+    });
+  })();
+
+  // ---- Promo banner dismiss ----
+  (function(){
+    const banner = document.getElementById('promo-banner');
+    const closeBtn = document.getElementById('promo-close');
+    if(banner && closeBtn){
+      closeBtn.addEventListener('click', ()=>{
+        banner.classList.add('hidden');
+      });
+    }
+  })();
+
+  // ---- Quiz widget ----
+  (function(){
+    const box = document.getElementById('quiz-box');
+    const step1 = document.getElementById('quiz-step-1');
+    const result = document.getElementById('quiz-result');
+    box.querySelectorAll('.quiz-opt').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const track = btn.dataset.track;
+        step1.style.display = 'none';
+        result.style.display = 'block';
+        result.textContent = 'Great fit: the ' + track + ' Track. Scroll down to book a free demo!';
+      });
+    });
+  })();
+
+  // ---- Gallery tabs ----
+  (function(){
+    const tabs = document.querySelectorAll('.gtab');
+    const photos = document.getElementById('gallery-photos');
+    const videos = document.getElementById('gallery-videos');
+    tabs.forEach(tab=>{
+      tab.addEventListener('click', ()=>{
+        tabs.forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        if(tab.dataset.tab === 'photos'){
+          photos.classList.remove('hidden'); videos.classList.add('hidden');
+        }else{
+          videos.classList.remove('hidden'); photos.classList.add('hidden');
+        }
+      });
+    });
+  })();
+
+  // ---- FAQ accordion ----
+  (function(){
+    document.querySelectorAll('.faq-item').forEach(item=>{
+      const q = item.querySelector('.faq-q');
+      const a = item.querySelector('.faq-a');
+      q.addEventListener('click', ()=>{
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(o=>{
+          o.classList.remove('open');
+          o.querySelector('.faq-a').style.maxHeight = null;
+        });
+        if(!isOpen){
+          item.classList.add('open');
+          a.style.maxHeight = a.scrollHeight + 'px';
+        }
+      });
+    });
+  })();
+
+  // ---- Branch locator ----
+  (function(){
+    const tabs = document.querySelectorAll('.branch-tab');
+    const cards = document.querySelectorAll('.branch-card');
+    const marker = document.getElementById('map-marker');
+    const pinSvg = document.getElementById('map-pin-svg');
+    const label = document.getElementById('map-label');
+    const positions = {
+      indiranagar: { left:'30%', top:'38%', color:'#FF6B5B', name:'Indiranagar' },
+      whitefield:  { left:'72%', top:'30%', color:'#2E9BE0', name:'Whitefield' },
+      hsr:         { left:'56%', top:'64%', color:'#8B5FBF', name:'HSR Layout' }
+    };
+    function select(key){
+      tabs.forEach(t=> t.classList.toggle('active', t.dataset.branch === key));
+      cards.forEach(c=> c.classList.toggle('active', c.dataset.branch === key));
+      const pos = positions[key];
+      if(pos && marker){
+        marker.style.left = pos.left;
+        marker.style.top = pos.top;
+        pinSvg.querySelector('path').setAttribute('fill', pos.color);
+        label.textContent = pos.name;
+        label.style.background = pos.color;
+      }
+    }
+    tabs.forEach(tab=> tab.addEventListener('click', ()=> select(tab.dataset.branch)));
+    select('indiranagar');
+  })();
+
+
+  // ---- Demo booking form ----
+  (function(){
+    const form = document.getElementById('demo-form');
+    const success = document.getElementById('form-success');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      success.style.display = 'block';
+      form.reset();
+      success.scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+  })();
+</script>
+
+
+</body></html>
