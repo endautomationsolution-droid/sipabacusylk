@@ -810,7 +810,7 @@
     <span class="ticker-item"><span class="star">★</span> Free gamified practice website</span>
     <span class="ticker-item"><span class="star">★</span> Monthly report cards</span>
     <span class="ticker-item"><span class="star">★</span> Free demo class available now</span>
-    <span class="ticker-item"><span class="star">★</span> 90 min × 2 classes a week</span>
+    <span class="ticker-item"><span class="star">★</span> 2hr 15min × 2 classes a week</span>
     <!-- duplicate set for seamless infinite scroll -->
     <span class="ticker-item" aria-hidden="true"><span class="star">★</span> Small batches, max 8 students</span>
     <span class="ticker-item" aria-hidden="true"><span class="star">★</span> Free gamified practice website</span>
@@ -1168,18 +1168,6 @@
         <div class="price-amount"><span class="num">₹[amount]</span><span class="per">/ year</span></div>
         <span class="price-discount">10% off the monthly rate</span>
       </div>
-    </div>
-    <div class="price-included">
-      <div class="price-included-label">Every plan includes</div>
-      <ul class="price-features">
-        <li><span class="tick">✓</span> Two 90-min classes weekly</li>
-        <li><span class="tick">✓</span> Free practice website</li>
-        <li><span class="tick">✓</span> Free 1:1 catch-up classes</li>
-        <li><span class="tick">✓</span> 2% extra off any plan when paid online</li>
-      </ul>
-    </div>
-    <p class="pricing-note">One-time registration fee of ₹[amount] covers the abacus kit, bag and t-shirt. Level books purchased separately as your child progresses.</p>
-  </div>
 </section>
 
 <!-- ================= FAQ ================= -->
@@ -1250,15 +1238,6 @@
           </div>
         </div>
         <div class="field">
-          <label for="branch">Preferred branch</label>
-          <select id="branch">
-            <option>Indiranagar, Bengaluru</option>
-            <option>Whitefield, Bengaluru</option>
-            <option>HSR Layout, Bengaluru</option>
-            <option>Online</option>
-          </select>
-        </div>
-        <div class="field">
           <label for="message">Message (optional)</label>
           <textarea id="message" rows="3" placeholder="Anything you&#39;d like us to know"></textarea>
         </div>
@@ -1271,32 +1250,15 @@
         <div class="branch-locator">
           <div class="eyebrow" style="margin-bottom:14px;">Branch Locator</div>
           <div class="branch-tabs" id="branch-tabs">
-            <button class="branch-tab active" data-branch="indiranagar" style="--branch-color:var(--coral);" type="button"><span class="dot"></span>Indiranagar</button>
-            <button class="branch-tab" data-branch="whitefield" style="--branch-color:var(--sky);" type="button"><span class="dot"></span>Whitefield</button>
-            <button class="branch-tab" data-branch="hsr" style="--branch-color:var(--violet);" type="button"><span class="dot"></span>HSR Layout</button>
+            <button class="branch-tab active" data-branch="Yelahanka New Town" style="--branch-color:var(--coral);" type="button"><span class="dot"></span>Yelahanka New Town</button>
           </div>
           <div class="branch-card active" data-branch="indiranagar">
-            <h4>SIP Abacus — Indiranagar</h4>
-            <div class="branch-row"><span class="ic">📍</span><span>100 Ft Road, Indiranagar, Bengaluru</span></div>
-            <div class="branch-row"><span class="ic">🕒</span><span>Mon–Sat, 3pm–7pm</span></div>
-            <div class="branch-row"><span class="ic">📞</span><span>+91 99999 99999</span></div>
+            <h4>SIP Abacus — Yelahanka New Town</h4>
+            <div class="branch-row"><span class="ic">📍</span><span>Yelahanka New Town</span></div>
+            <div class="branch-row"><span class="ic">🕒</span><span>Mon–Sat, 10am–8pm</span></div>
+            <div class="branch-row"><span class="ic">📞</span><span>+91 99722 75859</span></div>
             <a href="https://www.google.com/maps/search/?api=1&query=100+Ft+Road+Indiranagar+Bengaluru" target="_blank" rel="noopener" class="branch-directions" style="--branch-color:var(--coral);">Get directions →</a>
           </div>
-          <div class="branch-card" data-branch="whitefield">
-            <h4>SIP Abacus — Whitefield</h4>
-            <div class="branch-row"><span class="ic">📍</span><span>ITPL Main Road, Whitefield, Bengaluru</span></div>
-            <div class="branch-row"><span class="ic">🕒</span><span>Mon–Sat, 3pm–7pm</span></div>
-            <div class="branch-row"><span class="ic">📞</span><span>+91 99999 88888</span></div>
-            <a href="https://www.google.com/maps/search/?api=1&query=ITPL+Main+Road+Whitefield+Bengaluru" target="_blank" rel="noopener" class="branch-directions" style="--branch-color:var(--sky);">Get directions →</a>
-          </div>
-          <div class="branch-card" data-branch="hsr">
-            <h4>SIP Abacus — HSR Layout</h4>
-            <div class="branch-row"><span class="ic">📍</span><span>27th Main, HSR Layout, Bengaluru</span></div>
-            <div class="branch-row"><span class="ic">🕒</span><span>Mon–Sat, 3pm–7pm</span></div>
-            <div class="branch-row"><span class="ic">📞</span><span>+91 99999 77777</span></div>
-            <a href="https://www.google.com/maps/search/?api=1&query=27th+Main+HSR+Layout+Bengaluru" target="_blank" rel="noopener" class="branch-directions" style="--branch-color:var(--violet);">Get directions →</a>
-          </div>
-        </div>
         <div class="map-block">
           <div class="map-marker" id="map-marker" style="left:52%;top:44%;">
             <svg class="map-pin" viewBox="0 0 24 24" fill="none" id="map-pin-svg"><path d="M12 2C8 2 5 5 5 9c0 5.5 7 13 7 13s7-7.5 7-13c0-4-3-7-7-7Z" fill="#E8437A"></path><circle cx="12" cy="9" r="2.6" fill="#FBF6EC"></circle></svg>
@@ -1333,9 +1295,9 @@
       </div>
       <div class="foot-col">
         <h5>Get in touch</h5>
-        <a href="tel:+919999999999">+91 99999 99999</a>
-        <a href="mailto:hello@sipabacus.example">hello@sipabacus.example</a>
-        <a href="https://wa.me/919999999999" target="_blank" rel="noopener">WhatsApp us</a>
+        <a href="tel:+919972275859">+91 99722 75859</a>
+        <a href="mailto:sipabacusylk@gmail.com">sipabacusylk@gmail.com</a>
+        <a href="https://wa.me/919972275859" target="_blank" rel="noopener">WhatsApp us</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -1352,7 +1314,7 @@
 </a>
 
 <!-- ================= FLOATING WHATSAPP ================= -->
-<a class="float-whatsapp" href="https://wa.me/919999999999?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20class" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+<a class="float-whatsapp" href="https://wa.me/919972275859?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20class" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <div class="float-pulse"></div>
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" style="position:relative;"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.63 1.44 5.15L2 22l5.09-1.53a9.9 9.9 0 0 0 4.95 1.31h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.06c-.24.68-1.2 1.25-1.96 1.41-.52.11-1.2.2-3.49-.75-2.93-1.21-4.82-4.16-4.97-4.35-.14-.2-1.19-1.58-1.19-3.02 0-1.43.75-2.14 1.02-2.43.24-.27.53-.34.71-.34.18 0 .35 0 .5.01.16.01.38-.06.59.45.24.58.81 2 .88 2.15.07.14.11.31.02.5-.09.18-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.28.28-.12.56.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.2.68-.79.86-1.06.18-.27.36-.23.6-.14.24.09 1.55.73 1.82.86.27.14.44.2.51.32.07.11.07.65-.17 1.32Z"></path></svg>
 </a>
