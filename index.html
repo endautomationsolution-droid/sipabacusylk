@@ -190,6 +190,20 @@
   .nav-toggle{display:none;background:none;border:none;padding:8px;}
   .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px;transition:transform .2s,opacity .2s;}
 
+  /* ---------- HERO VIDEO ---------- */
+  .hero-video-section{background:var(--paper);padding:0 0 56px;}
+  .hero-video-card{
+    max-width:640px;margin:0 auto;border-radius:var(--radius-l);
+    overflow:hidden;background:var(--ink);box-shadow:var(--shadow-card);
+    border:1px solid var(--paper-line);
+  }
+  .hero-video{width:100%;display:block;max-height:520px;background:#000;}
+  .hero-video-caption{
+    padding:14px 20px;text-align:center;background:var(--white);
+    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-soft);
+  }
+
   /* ---------- BEAD DIVIDER ---------- */
   .bead-divider{
     display:flex;align-items:center;justify-content:center;gap:14px;
@@ -674,6 +688,19 @@
     </div>
   </div>
 </header>
+
+<!-- ================= HERO VIDEO ================= -->
+<section class="hero-video-section" id="hero-video">
+  <div class="wrap">
+    <div class="hero-video-card">
+      <video class="hero-video" autoplay loop muted playsinline preload="auto">
+        <source src="sip-abacus-demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p class="hero-video-caption">Watch: SIP Abacus students in action</p>
+    </div>
+  </div>
+</section>
 
 <!-- ================= PROMO BANNER (scrolling announcements) ================= -->
 <div class="promo-banner" id="promo-banner">
