@@ -628,7 +628,7 @@
   .journey{
     position:relative;
     margin:0 0 clamp(36px,5vw,64px);
-    padding:20px 22px 16px;
+    padding:20px 22px 28px;
     border:1px solid var(--paper-line);
     border-radius:var(--radius-l);
     background:linear-gradient(180deg,var(--white),var(--paper-alt));
@@ -639,7 +639,7 @@
     font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;
     text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;
   }
-  .journey-track{position:relative;height:56px;}
+  .journey-track{position:relative;height:88px;}
   .journey-wire{
     position:absolute;left:0;right:0;top:15px;height:3px;border-radius:3px;
     background:var(--paper-line);
@@ -667,6 +667,8 @@
   }
   .jn:hover .jn-bead{transform:scale(1.12);}
   .jn-lab{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.06em;line-height:1.3;text-align:center;}
+  .jn-name{font-family:'Sora',sans-serif;font-weight:600;letter-spacing:0;font-size:12px;color:var(--ink-soft);display:inline-block;margin-top:3px;}
+  .jn[data-on="1"] .jn-name{color:var(--ink);}
   .jn[data-done="1"] .jn-bead{border-color:var(--jc);background:var(--jc);}
   .jn[data-on="1"] .jn-bead{
     transform:scale(1.3);
@@ -676,36 +678,7 @@
   .jn[data-on="1"] .jn-lab{font-weight:700;}
 
   /* ---- layout ---- */
-  .hiw-layout{display:grid;grid-template-columns:224px 1fr;gap:clamp(28px,4vw,68px);align-items:start;}
-
-  /* ---- rail ---- */
-  .hiw-rail{position:sticky;top:112px;}
-  .rail-title{
-    font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;
-  }
-  .rail-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;}
-  .rail-list li{
-    display:flex;gap:11px;align-items:center;
-    padding:11px 12px;border-radius:var(--radius-s);
-    border:1px solid transparent;cursor:pointer;color:var(--ink-faint);
-    transition:background .3s ease,color .3s ease,border-color .3s ease;
-  }
-  .rail-list li:hover{background:var(--paper-alt);color:var(--ink-soft);}
-  .rail-list li:focus-visible{outline:2px solid var(--step);outline-offset:2px;}
-  .rail-list li[data-on="1"]{background:var(--tint);border-color:var(--step);color:var(--ink);}
-  .rl-dot{width:9px;height:9px;border-radius:50%;flex:none;background:var(--paper-line);transition:background .3s ease,box-shadow .3s ease;}
-  .rail-list li[data-on="1"] .rl-dot{background:var(--step);box-shadow:0 0 0 3px color-mix(in srgb,var(--step) 22%,transparent);}
-  .rl-name{font-size:13.5px;line-height:1.3;}
-  .rail-hint{
-    margin-top:16px;padding-top:13px;border-top:1px solid var(--paper-line);
-    font-family:'Space Mono',monospace;font-size:10px;line-height:1.7;color:var(--ink-faint);
-  }
-  .rail-hint kbd{
-    font-family:'Space Mono',monospace;font-size:9.5px;
-    border:1px solid var(--paper-line);border-radius:4px;
-    padding:1px 5px;background:var(--white);color:var(--ink-soft);
-  }
+  .hiw-layout{display:block;}
 
   /* ---- step cards ---- */
   .hiw-steps{display:flex;flex-direction:column;gap:clamp(18px,2.4vw,28px);}
@@ -721,12 +694,13 @@
     padding:clamp(22px,3vw,32px);
     border:1px solid var(--paper-line);border-radius:var(--radius-l);
     background:var(--white);
+    overflow:hidden;
     transition:border-color .45s ease,box-shadow .45s ease;
   }
   .hiw-step .step-info{grid-area:info;}
   .hiw-step .step-media{grid-area:media;margin-top:0;justify-self:stretch;align-self:start;}
-  .hiw-step .step-viz{grid-area:viz;align-self:stretch;height:100%;display:flex;flex-direction:column;justify-content:space-between;}
-  .hiw-step:has(.step-media--photo) .step-viz{align-self:start;height:auto;justify-content:flex-start;}
+  .hiw-step .step-viz{grid-area:viz;align-self:stretch;display:flex;flex-direction:column;justify-content:center;gap:18px;}
+  .hiw-step:has(.step-media--photo) .step-viz{align-self:start;min-height:0;justify-content:flex-start;gap:0;overflow:hidden;}
   .hiw-step::before{
     content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
     border-radius:var(--radius-l) 0 0 var(--radius-l);background:var(--step);
@@ -824,21 +798,20 @@
     border-radius:var(--radius-m);background:var(--tint);
     padding:16px 16px 14px;position:relative;
     border:1px solid color-mix(in srgb,var(--step) 20%,transparent);
-    aspect-ratio:3/4;
+    box-sizing:border-box;
   }
-  .hiw-step:has(.step-media--zoomout) .step-viz{aspect-ratio:4/5;}
-  .hiw-step:has(.step-media--photo) .step-viz{aspect-ratio:16/9;}
-  .step-viz > svg{flex:1 1 auto;min-height:0;height:auto;margin:auto 0;}
+  .step-viz > svg{width:100%;height:auto;margin:0;overflow:visible;}
+  .hiw-step:has(.step-media--photo) .step-viz > svg{flex:1 1 auto;min-height:40px;height:100%;object-fit:contain;margin:16px 0;}
   .viz-cap{
-    display:flex;align-items:center;gap:8px;
+    display:flex;align-items:center;gap:8px;flex:none;
     font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.13em;
     text-transform:uppercase;color:var(--step);
-    padding-bottom:11px;margin-bottom:12px;
+    padding-bottom:11px;
     border-bottom:1px solid color-mix(in srgb,var(--step) 25%,transparent);
   }
-  .step-viz svg{width:100%;height:auto;display:block;overflow:visible;}
   .viz-note{
-    margin-top:13px;padding-top:11px;
+    flex:none;
+    padding-top:11px;
     border-top:1px solid color-mix(in srgb,var(--step) 25%,transparent);
     font-size:12px;line-height:1.5;color:var(--ink-soft);
   }
@@ -881,21 +854,14 @@
       grid-template-areas:"info" "media" "viz";
     }
     .hiw-step .step-media{margin-top:2px;justify-self:stretch;}
-    .hiw-step .step-viz{height:auto;align-self:start;justify-content:flex-start;aspect-ratio:auto;}
-    .hiw-step:has(.step-media--zoomout) .step-viz,
-    .hiw-step:has(.step-media--photo) .step-viz{aspect-ratio:auto;}
     .step-viz{position:static;max-width:420px;}
   }
   @media (max-width:900px){
-    .hiw-layout{grid-template-columns:1fr;gap:26px;}
-    .hiw-rail{position:static;}
-    .rail-list{display:grid;grid-template-columns:1fr 1fr;}
-    .rail-hint{display:none;}
     .jn-lab{font-size:9px;}
+    .jn-name{font-size:10px;}
   }
   @media (max-width:560px){
-    .rail-list{grid-template-columns:1fr;}
-    .journey{padding:16px 14px 12px;}
+    .journey{padding:16px 14px 24px;}
   }
   @media (prefers-reduced-motion:reduce){
     .vz-draw,.vz-in,.vz-grow,.hiw-step,.hiw-step::before,.step-out li,.jn-bead,.journey-fill{transition:none;}
@@ -1186,36 +1152,25 @@
         <div class="journey-nodes">
           <button class="jn" type="button" data-jump="0" style="--jc:var(--sky);" aria-label="Go to stage 01, The physical abacus">
             <span class="jn-bead"></span>
-            <span class="jn-lab">01<br>Months 1&ndash;3</span>
+            <span class="jn-lab">01<br>Months 1&ndash;3<br><span class="jn-name">The physical abacus</span></span>
           </button>
           <button class="jn" type="button" data-jump="1" style="--jc:var(--magenta);" aria-label="Go to stage 02, Mental visualisation">
             <span class="jn-bead"></span>
-            <span class="jn-lab">02<br>Months 4&ndash;8</span>
+            <span class="jn-lab">02<br>Months 4&ndash;8<br><span class="jn-name">Mental visualisation</span></span>
           </button>
           <button class="jn" type="button" data-jump="2" style="--jc:var(--teal);" aria-label="Go to stage 03, Speed &amp; accuracy">
             <span class="jn-bead"></span>
-            <span class="jn-lab">03<br>Continuous</span>
+            <span class="jn-lab">03<br>Continuous<br><span class="jn-name">Speed &amp; accuracy</span></span>
           </button>
           <button class="jn" type="button" data-jump="3" style="--jc:#E0A400;" aria-label="Go to stage 04, Assessment &amp; competition">
             <span class="jn-bead"></span>
-            <span class="jn-lab">04<br>Year 1 onward</span>
+            <span class="jn-lab">04<br>Year 1 onward<br><span class="jn-name">Assessment &amp; competition</span></span>
           </button>
         </div>
       </div>
     </div>
 
     <div class="hiw-layout">
-      <aside class="hiw-rail">
-        <div class="rail-title">Stages</div>
-        <ul class="rail-list">
-          <li tabindex="0" role="button" data-jump="0" style="--step:var(--sky);--tint:#E8F3FC;"><span class="rl-dot"></span><span class="rl-name">The physical abacus</span></li>
-          <li tabindex="0" role="button" data-jump="1" style="--step:var(--magenta);--tint:#FCEAF1;"><span class="rl-dot"></span><span class="rl-name">Mental visualisation</span></li>
-          <li tabindex="0" role="button" data-jump="2" style="--step:var(--teal);--tint:#E1F5EE;"><span class="rl-dot"></span><span class="rl-name">Speed &amp; accuracy</span></li>
-          <li tabindex="0" role="button" data-jump="3" style="--step:#E0A400;--tint:#FFF3D6;"><span class="rl-dot"></span><span class="rl-name">Assessment &amp; competition</span></li>
-        </ul>
-        <div class="rail-hint">Use <kbd>&uarr;</kbd> <kbd>&darr;</kbd> to move between stages.</div>
-      </aside>
-
       <div class="hiw-steps">
         <article class="hiw-step" style="--step:var(--sky);--tint:#E8F3FC;">
           <div class="step-info">
@@ -1395,7 +1350,6 @@
   var root   = document.getElementById('how');
   if(!root) return;
   var steps  = [].slice.call(root.querySelectorAll('.hiw-step'));
-  var labels = [].slice.call(root.querySelectorAll('.rail-list li'));
   var nodes  = [].slice.call(root.querySelectorAll('.jn'));
   var fill   = document.getElementById('hiw-fill');
   if(!steps.length) return;
@@ -1408,10 +1362,6 @@
     if(i === active) return;
     active = i;
     steps.forEach(function(s,n){ s.setAttribute('data-on', n === i ? '1' : '0'); });
-    labels.forEach(function(l,n){
-      l.setAttribute('data-on', n === i ? '1' : '0');
-      l.setAttribute('aria-current', n === i ? 'true' : 'false');
-    });
     nodes.forEach(function(b,n){
       b.setAttribute('data-on',   n === i ? '1' : '0');
       b.setAttribute('data-done', n <= i ? '1' : '0');
@@ -1450,7 +1400,6 @@
       if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); jump(i); }
     });
   }
-  labels.forEach(wire);
   nodes.forEach(wire);
 
   // graphs animate independently as they scroll into view
@@ -1497,6 +1446,21 @@
       if(bar && v.duration) bar.style.width = (v.currentTime / v.duration * 100) + '%';
     });
   });
+  // match the photo panel's height exactly to its photo (video panels use CSS stretch instead)
+  function syncVizHeights(){
+    var isStacked = window.innerWidth <= 1040;
+    steps.forEach(function(s){
+      var media = s.querySelector('.step-media--photo');
+      var viz   = s.querySelector('.step-viz');
+      if(!media || !viz) return;
+      if(isStacked){ viz.style.height = ''; return; }
+      viz.style.height = media.offsetHeight + 'px';
+    });
+  }
+  syncVizHeights();
+  window.addEventListener('resize', syncVizHeights);
+  window.addEventListener('load', syncVizHeights);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(syncVizHeights); }
 })();
 </script>
 
