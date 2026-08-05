@@ -455,9 +455,24 @@
   .price-card.featured{border:1.5px solid var(--coral);box-shadow:0 1px 2px rgba(22,35,63,.06), 0 16px 34px -16px rgba(255,107,91,.35);}
   .price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--coral);color:var(--white);font-size:12px;font-weight:700;padding:6px 16px;border-radius:999px;white-space:nowrap;}
   .price-plan{font-family:'Space Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);}
-  .price-amount{display:flex;align-items:baseline;gap:6px;margin-top:14px;margin-bottom:20px;}
-  .price-amount .num{font-family:'Fraunces',serif;font-size:32px;font-weight:700;color:var(--ink);}
-  .price-amount .per{font-size:14px;color:var(--ink-faint);}
+  .price-save{display:flex;align-items:center;gap:12px;margin:16px 0 14px;}
+  .save-num{
+    font-family:'Fraunces',serif;font-size:52px;font-weight:700;line-height:.9;
+    color:var(--ink);letter-spacing:-.02em;
+  }
+  .save-num i{font-style:normal;font-size:26px;vertical-align:super;margin-left:1px;}
+  .price-card.featured .save-num{color:var(--coral);}
+  .price-card:last-child .save-num{color:var(--teal);}
+  .save-lab{
+    font-family:'Space Mono',monospace;font-size:11px;line-height:1.45;
+    letter-spacing:.04em;color:var(--ink-faint);text-transform:uppercase;
+  }
+  .price-terms{font-size:14px;color:var(--ink-soft);margin-bottom:16px;}
+  .price-foot{
+    margin-top:26px;font-size:13.5px;color:var(--ink-faint);
+    text-align:center;max-width:56ch;margin-left:auto;margin-right:auto;
+  }
+  .price-foot a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
   .price-discount{
     display:inline-flex;align-items:center;gap:7px;
     font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.02em;
@@ -541,22 +556,10 @@
   .branch-directions:hover{background:var(--branch-color,var(--coral));color:var(--white);}
   .map-block{
     aspect-ratio:16/8;border-radius:var(--radius-m);
-    background:
-      linear-gradient(var(--paper-alt) 1px, transparent 1px) 0 0/28px 28px,
-      linear-gradient(90deg, var(--paper-alt) 1px, transparent 1px) 0 0/28px 28px,
-      var(--white);
     border:1px solid var(--paper-line);position:relative;overflow:hidden;
+    background:var(--white);
   }
-  .map-marker{
-    position:absolute;top:44%;left:52%;transform:translate(-50%,-100%);
-    display:flex;flex-direction:column;align-items:center;transition:left .4s ease, top .4s ease;
-  }
-  .map-pin{width:34px;height:34px;animation:pinBounce 1.8s ease-in-out infinite;}
-  @keyframes pinBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
-  .map-label{
-    margin-top:2px;font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;
-    background:var(--ink);color:var(--white);padding:3px 9px;border-radius:999px;white-space:nowrap;
-  }
+  .map-block.map-embed iframe{display:block;}
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--ink);color:#C9D2E8;padding:64px 0 28px;}
@@ -580,22 +583,9 @@
   .float-whatsapp:hover{transform:translateY(-3px) scale(1.03);}
   .float-pulse{position:absolute;inset:0;border-radius:50%;background:var(--teal);animation:pulse 2.2s infinite;}
   @keyframes pulse{0%{transform:scale(1);opacity:.55;}100%{transform:scale(1.7);opacity:0;}}
-  .float-demo{
-    position:fixed;bottom:26px;right:98px;z-index:200;
-    display:flex;align-items:center;gap:8px;
-    padding:13px 20px;border-radius:999px;background:var(--magenta);color:var(--white);
-    font-family:'Sora',sans-serif;font-weight:700;font-size:14px;white-space:nowrap;
-    box-shadow:0 14px 30px -10px rgba(232,67,122,.7);
-    transition:transform .15s, box-shadow .15s;
-  }
-  .float-demo:hover{transform:translateY(-3px) scale(1.03);}
-  .float-demo svg{flex-shrink:0;}
   @media (max-width:480px){
-    .float-demo{padding:13px;border-radius:50%;width:52px;height:52px;justify-content:center;}
-    .float-demo span{display:none;}
-    .float-whatsapp{width:52px;height:52px;bottom:20px;right:20px;}
-    .float-demo{bottom:20px;right:82px;}
-  }
+      .float-whatsapp{width:52px;height:52px;bottom:20px;right:20px;}
+    }
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:980px){
@@ -782,6 +772,7 @@
     background:#0E1626;aspect-ratio:16/9;
   }
   .step-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .step-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
   .step-media::after{
     content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
     box-shadow:inset 0 0 0 3px color-mix(in srgb,var(--step) 55%,transparent);
@@ -871,6 +862,37 @@
     .vz-grow{transform:none;} .vz-draw{stroke-dashoffset:0;}
     .hiw-step::before{transform:scaleY(1);}
   }
+
+  /* ---------- WhatsApp contact panel ---------- */
+  .whatsapp-panel{
+    display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+    padding:34px 30px;
+  }
+  .whatsapp-panel .wa-icon{margin-bottom:4px;}
+  .whatsapp-panel h3{font-size:22px;margin:0;}
+  .whatsapp-panel .wa-copy{color:var(--ink-soft);margin:0 0 6px;}
+  .wa-cta{
+    display:inline-flex;align-items:center;
+    background:#25D366;border-color:#25D366;
+  }
+  .wa-cta:hover{background:#1EBE5A;border-color:#1EBE5A;}
+  .wa-badge{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.04em;
+    color:#0E6B58;background:#E4F5F0;border:1px solid #BEE8DA;
+    padding:6px 12px;border-radius:999px;margin-top:6px;
+  }
+  .wa-dot{
+    width:7px;height:7px;border-radius:50%;background:#25D366;flex:none;
+    box-shadow:0 0 0 0 rgba(37,211,102,.55);
+    animation:waPulse 1.8s ease-out infinite;
+  }
+  @keyframes waPulse{
+    0%{box-shadow:0 0 0 0 rgba(37,211,102,.55);}
+    70%{box-shadow:0 0 0 7px rgba(37,211,102,0);}
+    100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+  }
+  @media (prefers-reduced-motion:reduce){ .wa-dot{animation:none;} }
 </style>
 </head>
 <body>
@@ -913,7 +935,7 @@
         <h1>Unlock Your Child's <em>Brain Power</em></h1>
         <p class="hero-sub">Empowering children aged 6–14 with a structured Abacus and Mental Math program that develops concentration, enhances memory, and accelerates calculation speed—one bead at a time.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Book a FREE Demo Class</a>
+          <a href="https://wa.me/919972275859?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20class" target="_blank" rel="noopener" class="btn btn-primary">Chat with us on WhatsApp</a>
           <a href="https://wa.me/919999999999?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20SIP%20Abacus" target="_blank" rel="noopener" class="btn btn-whatsapp">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.63 1.44 5.15L2 22l5.09-1.53a9.9 9.9 0 0 0 4.95 1.31h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.06c-.24.68-1.2 1.25-1.96 1.41-.52.11-1.2.2-3.49-.75-2.93-1.21-4.82-4.16-4.97-4.35-.14-.2-1.19-1.58-1.19-3.02 0-1.43.75-2.14 1.02-2.43.24-.27.53-.34.71-.34.18 0 .35 0 .5.01.16.01.38-.06.59.45.24.58.81 2 .88 2.15.07.14.11.31.02.5-.09.18-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.28.28-.12.56.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.2.68-.79.86-1.06.18-.27.36-.23.6-.14.24.09 1.55.73 1.82.86.27.14.44.2.51.32.07.11.07.65-.17 1.32Z"></path></svg>
             Chat on WhatsApp
@@ -1110,8 +1132,8 @@
   <div class="wrap">
     <div class="head-block hiw-head">
       <div class="eyebrow">The method</div>
-      <h2>How the programme works</h2>
-      <p>A four-stage progression from the physical abacus to mental calculation, assessed at every level.</p>
+      <h2>From beads to lightning-fast mental math</h2>
+      <p>Every child follows the same proven four-step journey to build speed, accuracy, concentration, and confidence.</p>
     </div>
 
     <!-- journey strip -->
@@ -1158,7 +1180,7 @@
           <div>
             <div class="step-head"><span class="step-idx">01</span><span class="step-when">Months 1&ndash;3</span></div>
             <h3>The physical abacus</h3>
-            <p>Students begin on a standard soroban, learning bead values, place value and the finger technique that every later stage depends on. Accuracy is established before any attempt at speed.</p>
+            <p>Children begin on a physical abacus, developing strong number sense and mastering the correct finger technique &mdash; the essential foundation on which every later skill is built.</p>
             <ul class="step-out">
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Reads 3-digit numbers on the frame</span></li>
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Correct finger technique</span></li>
@@ -1208,7 +1230,7 @@
           <div>
             <div class="step-head"><span class="step-idx">02</span><span class="step-when">Months 4&ndash;8</span></div>
             <h3>Mental visualisation</h3>
-            <p>The tool is gradually withdrawn. Students hold the bead positions as a mental image and move them without touching an abacus &mdash; the point at which arithmetic becomes recall rather than procedure.</p>
+            <p>With consistent practice, the physical abacus is no longer needed. Students begin to picture the beads in their minds, performing calculations mentally while strengthening visualisation, concentration, and confidence.</p>
             <ul class="step-out">
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Solves without touching beads</span></li>
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Holds 2&ndash;3 columns in mind</span></li>
@@ -1253,7 +1275,7 @@
           <div>
             <div class="step-head"><span class="step-idx">03</span><span class="step-when">Continuous</span></div>
             <h3>Speed and accuracy</h3>
-            <p>Timed practice converts the mental image into working speed. Sessions are structured, tracked and reported monthly, so progress is measured rather than assumed.</p>
+            <p>With regular guided practice, the mental image becomes second nature &mdash; boosting speed, sharpening concentration, improving calculation accuracy, and building lasting confidence.</p>
             <ul class="step-out">
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Timed sets each session</span></li>
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Monthly report card</span></li>
@@ -1295,7 +1317,7 @@
           <div>
             <div class="step-head"><span class="step-idx">04</span><span class="step-when">Year 1 onward</span></div>
             <h3>Assessment and competition</h3>
-            <p>Each of the eleven levels closes with a formal test. Students who qualify progress to institute, state and national competitions alongside thousands of other candidates.</p>
+            <p>Each of the eleven levels closes with a formal test. With every level they complete, students gain the confidence to compete in state and national-level competitions alongside thousands of talented learners.</p>
             <ul class="step-out">
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Level test at every stage</span></li>
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Institute &amp; state rounds</span></li>
@@ -1303,12 +1325,7 @@
             </ul>
             <div class="step-media">
               <span class="step-tag">National competition</span>
-              <button class="v-btn" type="button" data-playing="0" aria-label="Play or pause this clip">
-                <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-                <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-              </button>
-              <div class="v-bar"><i></i></div>
-              <video muted loop playsinline preload="metadata"><source src="step-4-stage.mp4" type="video/mp4"></video>
+              <img src="step-4-trophies.png" alt="SIP Abacus students holding trophies after a national-level competition" loading="lazy">
             </div>
           </div>
 <figure class="step-viz">
@@ -1498,7 +1515,7 @@
         <div class="prog-age">Ages 5 – 7</div>
         <p class="desc">A unique blend of Abacus learning and personality development, designed using a fun "Play &amp; Learn" approach that keeps young children engaged while building essential life skills.</p>
         <div class="prog-meta"><span>Levels 1–4</span><span>2hr 15min / week</span></div>
-        <a href="#contact" class="prog-cta">Book Junior demo</a>
+        <a href="https://wa.me/919972275859?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20for%20the%20Junior%20track" target="_blank" rel="noopener" class="prog-cta">Ask about Junior on WhatsApp</a>
       </div>
       <div class="prog-card senior">
         <div class="prog-level">Foundation</div>
@@ -1506,7 +1523,7 @@
         <div class="prog-age">Ages 8 – 10</div>
         <p class="desc">Marks the pivotal transition from physical abacus to mental calculation, laying the groundwork for true mental math mastery. Children begin visualising the abacus in their minds, enabling faster, more accurate calculations with confidence. Covers multiplication, mental &amp; number visualisation, speed &amp; accuracy, concentration enhancement, and confidence building.</p>
         <div class="prog-meta"><span>Levels 3–5</span><span>2hr 15min / week</span></div>
-        <a href="#contact" class="prog-cta">Book Foundation demo</a>
+        <a href="https://wa.me/919972275859?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20for%20the%20Foundation%20track" target="_blank" rel="noopener" class="prog-cta">Ask about Foundation on WhatsApp</a>
       </div>
       <div class="prog-card advanced">
         <div class="prog-level">Advanced</div>
@@ -1514,7 +1531,7 @@
         <div class="prog-age">Ages 11 – 14</div>
         <p class="desc">Takes mental math to the next stage, where children confidently solve complex calculations without a physical abacus — enhancing logical thinking, visualisation, concentration, and calculation speed, and preparing them for real-world problem-solving.</p>
         <div class="prog-meta"><span>Levels 6–11</span><span>2hr 15min / week</span></div>
-        <a href="#contact" class="prog-cta">Book Advanced demo</a>
+        <a href="https://wa.me/919972275859?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20for%20the%20Advanced%20track" target="_blank" rel="noopener" class="prog-cta">Ask about Advanced on WhatsApp</a>
       </div>
     </div>
 
@@ -1725,25 +1742,45 @@
     <div class="head-block">
       <div class="eyebrow">Getting Started</div>
       <h2>From a free demo to your child's first batch.</h2>
-      <p>Update the amounts below to match your Yelahanka New Town pricing.</p>
+      <p>Pay monthly, or commit for longer and pay less. Choose what suits you.</p>
     </div>
     <div class="pricing-grid">
+
       <div class="price-card">
         <div class="price-plan">Monthly</div>
-        <div class="price-amount"><span class="num">₹[amount]</span><span class="per">/ month</span></div>
-        <span class="price-discount zero">No discount · pay as you go</span>
+        <div class="price-save">
+          <span class="save-num">&mdash;</span>
+          <span class="save-lab">standard<br>rate</span>
+        </div>
+        <div class="price-terms">Paid month by month</div>
+        <span class="price-discount zero">No discount &middot; pay as you go</span>
       </div>
+
       <div class="price-card featured">
         <span class="price-badge">Best value</span>
-        <div class="price-plan">2 Payments (6 Months)</div>
-        <div class="price-amount"><span class="num">₹[amount]</span><span class="per">/ instalment</span></div>
-        <span class="price-discount">5% off the monthly rate</span>
+        <div class="price-plan">2 Payments</div>
+        <div class="price-save">
+          <span class="save-num">5<i>%</i></span>
+          <span class="save-lab">off the<br>monthly rate</span>
+        </div>
+        <div class="price-terms">Two instalments, six months each</div>
+        <span class="price-discount">Saves you one part-month a year</span>
       </div>
+
       <div class="price-card">
-        <div class="price-plan">1 Time Payment (12 Months)</div>
-        <div class="price-amount"><span class="num">₹[amount]</span><span class="per">/ year</span></div>
-        <span class="price-discount">10% off the monthly rate</span>
+        <div class="price-plan">1 Time Payment</div>
+        <div class="price-save">
+          <span class="save-num">10<i>%</i></span>
+          <span class="save-lab">off the<br>monthly rate</span>
+        </div>
+        <div class="price-terms">Full twelve months upfront</div>
+        <span class="price-discount">Largest saving we offer</span>
       </div>
+
+    </div>
+
+    <p class="price-foot">Fees vary by level and batch. <a href="#contact">Ask us for the current fee sheet</a> &mdash; the discounts above apply to whichever rate your child starts on.</p>
+  </div>
 </section>
 
 <!-- ================= FAQ ================= -->
@@ -1782,45 +1819,23 @@
 <section id="contact" class="section-pad">
   <div class="wrap">
     <div class="head-block">
-      <div class="eyebrow">Contact &amp; Book a Demo</div>
-      <h2>Book your child's free demo class</h2>
-      <p>Fill in the form and our team will call you within 24 hours to schedule a slot.</p>
+      <div class="eyebrow">Contact Us</div>
+      <h2>Chat with us on WhatsApp</h2>
+      <p>Message us your child's age and preferred timing &mdash; get an instant reply and a free demo slot booked in minutes.</p>
     </div>
-    <div class="contact-grid">
-      <form class="contact-form" id="demo-form">
-        <div class="field-row">
-          <div class="field">
-            <label for="parent-name">Parent name</label>
-            <input id="parent-name" type="text" required="" placeholder="Your full name">
-          </div>
-          <div class="field">
-            <label for="phone">Phone number</label>
-            <input id="phone" type="tel" required="" placeholder="10-digit mobile number">
-          </div>
+    <div class="contact-form whatsapp-panel">
+        <div class="wa-icon">
+          <svg viewBox="0 0 32 32" width="40" height="40" aria-hidden="true"><path fill="#25D366" d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.5 2.1 7.9L.5 31.5l7.8-2c2.3 1.3 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.4C31.5 7.4 24.6.5 16 .5z"/><path fill="#fff" d="M23.6 19.4c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.7-1.7-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.6.1-.2.3-.4.5-.6.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.7-1.8-1-2.4-.3-.7-.5-.6-.7-.6h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 2-.8 2.2-1.6.3-.8.3-1.5.2-1.6-.1-.1-.3-.2-.6-.4z"/></svg>
         </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="child-age">Child's age</label>
-            <input id="child-age" type="number" min="4" max="16" required="" placeholder="e.g. 8">
-          </div>
-          <div class="field">
-            <label for="track">Preferred track</label>
-            <select id="track">
-              <option>Not sure — please recommend</option>
-              <option>Junior (5–7)</option>
-              <option>Foundation (8–10)</option>
-              <option>Advanced (11–14)</option>
-            </select>
-          </div>
-        </div>
-        <div class="field">
-          <label for="message">Message (optional)</label>
-          <textarea id="message" rows="3" placeholder="Anything you&#39;d like us to know"></textarea>
-        </div>
-        <p class="form-note">By submitting, you agree to be contacted by phone or WhatsApp regarding your demo class.</p>
-        <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Book Free Demo Class</button>
-        <div class="form-success" id="form-success">Thanks! Your demo request has been received — we'll call you within 24 hours.</div>
-      </form>
+        <h3>Instant reply, day or night</h3>
+        <p class="wa-copy">Our WhatsApp assistant replies the second you message &mdash; any time, any day &mdash; and can book your free demo slot on the spot.</p>
+        <a class="btn btn-primary wa-cta" href="https://wa.me/919972275859?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20class" target="_blank" rel="noopener">
+          <svg viewBox="0 0 32 32" width="18" height="18" aria-hidden="true" style="margin-right:8px;vertical-align:-3px;"><path fill="currentColor" d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.5 2.1 7.9L.5 31.5l7.8-2c2.3 1.3 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.4C31.5 7.4 24.6.5 16 .5zm7.6 18.9c-.1-.1-.3-.2-.6-.4-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.7-1.7-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.6.1-.2.3-.4.5-.6.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.7-1.8-1-2.4-.3-.7-.5-.6-.7-.6h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 2-.8 2.2-1.6.3-.8.3-1.5.2-1.6z"/></svg>
+          Message us on WhatsApp
+        </a>
+        <div class="wa-badge"><span class="wa-dot"></span>Replies instantly, 24/7</div>
+        <p class="form-note">Prefer to talk? Call +91 99722 75859, Mon&ndash;Sat, 10am&ndash;8pm &mdash; our AI call assistant is coming soon to answer around the clock too.</p>
+      </div>
 
       <div>
         <div class="branch-locator">
@@ -1828,18 +1843,19 @@
           <div class="branch-tabs" id="branch-tabs">
             <button class="branch-tab active" data-branch="Yelahanka New Town" style="--branch-color:var(--coral);" type="button"><span class="dot"></span>Yelahanka New Town</button>
           </div>
-          <div class="branch-card active" data-branch="indiranagar">
+          <div class="branch-card active" data-branch="yelahanka">
             <h4>SIP Abacus — Yelahanka New Town</h4>
-            <div class="branch-row"><span class="ic">📍</span><span>Yelahanka New Town</span></div>
+            <div class="branch-row"><span class="ic">📍</span><span>B2&ndash;61, 7th B Cross Rd, near old RTO office, opposite Bank of Baroda, Yelahanka Satellite Town, Yelahanka New Town, Bengaluru, Karnataka 560064</span></div>
             <div class="branch-row"><span class="ic">🕒</span><span>Mon–Sat, 10am–8pm</span></div>
             <div class="branch-row"><span class="ic">📞</span><span>+91 99722 75859</span></div>
-            <a href="https://www.google.com/maps/search/?api=1&query=100+Ft+Road+Indiranagar+Bengaluru" target="_blank" rel="noopener" class="branch-directions" style="--branch-color:var(--coral);">Get directions →</a>
+            <a href="https://maps.app.goo.gl/N9zo7KQMGMokKJM66" target="_blank" rel="noopener" class="branch-directions" style="--branch-color:var(--coral);">Get directions →</a>
           </div>
-        <div class="map-block">
-          <div class="map-marker" id="map-marker" style="left:52%;top:44%;">
-            <svg class="map-pin" viewBox="0 0 24 24" fill="none" id="map-pin-svg"><path d="M12 2C8 2 5 5 5 9c0 5.5 7 13 7 13s7-7.5 7-13c0-4-3-7-7-7Z" fill="#E8437A"></path><circle cx="12" cy="9" r="2.6" fill="#FBF6EC"></circle></svg>
-            <span class="map-label" id="map-label">Indiranagar</span>
-          </div>
+        <div class="map-block map-embed">
+          <iframe
+            src="https://www.google.com/maps?cid=6863906419947925239&output=embed"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="SIP Abacus Yelahanka New Town on Google Maps"></iframe>
         </div>
       </div>
     </div>
@@ -1882,12 +1898,6 @@
     </div>
   </div>
 </footer>
-
-<!-- ================= FLOATING BOOK A DEMO ================= -->
-<a class="float-demo" href="#contact" aria-label="Book a free demo class">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2.5"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
-  <span>Book a Demo</span>
-</a>
 
 <!-- ================= FLOATING WHATSAPP ================= -->
 <a class="float-whatsapp" href="https://wa.me/919972275859?text=Hi%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20class" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
@@ -1977,7 +1987,7 @@
         const track = btn.dataset.track;
         step1.style.display = 'none';
         result.style.display = 'block';
-        result.textContent = 'Great fit: the ' + track + ' Track. Scroll down to book a free demo!';
+        result.textContent = 'Great fit: the ' + track + ' Track. Scroll down and message us on WhatsApp!';
       });
     });
   })();
@@ -2019,46 +2029,6 @@
     });
   })();
 
-  // ---- Branch locator ----
-  (function(){
-    const tabs = document.querySelectorAll('.branch-tab');
-    const cards = document.querySelectorAll('.branch-card');
-    const marker = document.getElementById('map-marker');
-    const pinSvg = document.getElementById('map-pin-svg');
-    const label = document.getElementById('map-label');
-    const positions = {
-      indiranagar: { left:'30%', top:'38%', color:'#FF6B5B', name:'Indiranagar' },
-      whitefield:  { left:'72%', top:'30%', color:'#2E9BE0', name:'Whitefield' },
-      hsr:         { left:'56%', top:'64%', color:'#8B5FBF', name:'HSR Layout' }
-    };
-    function select(key){
-      tabs.forEach(t=> t.classList.toggle('active', t.dataset.branch === key));
-      cards.forEach(c=> c.classList.toggle('active', c.dataset.branch === key));
-      const pos = positions[key];
-      if(pos && marker){
-        marker.style.left = pos.left;
-        marker.style.top = pos.top;
-        pinSvg.querySelector('path').setAttribute('fill', pos.color);
-        label.textContent = pos.name;
-        label.style.background = pos.color;
-      }
-    }
-    tabs.forEach(tab=> tab.addEventListener('click', ()=> select(tab.dataset.branch)));
-    select('indiranagar');
-  })();
-
-
-  // ---- Demo booking form ----
-  (function(){
-    const form = document.getElementById('demo-form');
-    const success = document.getElementById('form-success');
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      success.style.display = 'block';
-      form.reset();
-      success.scrollIntoView({behavior:'smooth', block:'nearest'});
-    });
-  })();
 </script>
 
 
