@@ -711,13 +711,21 @@
   .hiw-steps{display:flex;flex-direction:column;gap:clamp(18px,2.4vw,28px);}
   .hiw-step{
     position:relative;
-    display:grid;grid-template-columns:1fr 316px;gap:clamp(22px,3vw,40px);
+    display:grid;
+    grid-template-columns:1fr 316px;
+    grid-template-areas:
+      "info info"
+      "media viz";
+    gap:clamp(16px,2.4vw,26px) clamp(22px,3vw,40px);
     align-items:start;
     padding:clamp(22px,3vw,32px);
     border:1px solid var(--paper-line);border-radius:var(--radius-l);
     background:var(--white);
     transition:border-color .45s ease,box-shadow .45s ease;
   }
+  .hiw-step .step-info{grid-area:info;}
+  .hiw-step .step-media{grid-area:media;margin-top:0;justify-self:start;}
+  .hiw-step .step-viz{grid-area:viz;}
   .hiw-step::before{
     content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
     border-radius:var(--radius-l) 0 0 var(--radius-l);background:var(--step);
@@ -845,7 +853,11 @@
   .hiw-step[data-on="1"] .d5{transition-delay:.50s;}
 
   @media (max-width:1040px){
-    .hiw-step{grid-template-columns:1fr;}
+    .hiw-step{
+      grid-template-columns:1fr;
+      grid-template-areas:"info" "media" "viz";
+    }
+    .hiw-step .step-media{margin-top:2px;justify-self:stretch;}
     .step-viz{position:static;max-width:360px;}
   }
   @media (max-width:900px){
@@ -1180,7 +1192,7 @@
 
       <div class="hiw-steps">
         <article class="hiw-step" style="--step:var(--sky);--tint:#E8F3FC;">
-          <div>
+          <div class="step-info">
             <div class="step-head"><span class="step-idx">01</span><span class="step-when">Months 1&ndash;3</span></div>
             <h3>The physical abacus</h3>
             <p>Children begin on a physical abacus, developing strong number sense and mastering the correct finger technique &mdash; the essential foundation on which every later skill is built.</p>
@@ -1189,7 +1201,8 @@
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Correct finger technique</span></li>
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Adds and subtracts on beads</span></li>
             </ul>
-            <div class="step-media step-media--zoomout">
+            </div>
+<div class="step-media step-media--zoomout">
               <span class="step-tag">Foundation class</span>
               <button class="v-btn" type="button" data-playing="0" aria-label="Play or pause this clip">
                 <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -1198,7 +1211,6 @@
               <div class="v-bar"><i></i></div>
               <video muted loop playsinline preload="metadata"><source src="step-1-beads.mp4" type="video/mp4"></video>
             </div>
-          </div>
 <figure class="step-viz">
             <figcaption class="viz-cap">Fig. 01 &middot; Bead notation</figcaption>
             <svg viewBox="0 0 240 132" role="img" aria-label="Soroban columns representing hundreds, tens and units">
@@ -1230,7 +1242,7 @@
         </article>
 
         <article class="hiw-step" style="--step:var(--magenta);--tint:#FCEAF1;">
-          <div>
+          <div class="step-info">
             <div class="step-head"><span class="step-idx">02</span><span class="step-when">Months 4&ndash;8</span></div>
             <h3>Mental visualisation</h3>
             <p>With consistent practice, the physical abacus is no longer needed. Students begin to picture the beads in their minds, performing calculations mentally while strengthening visualisation, concentration, and confidence.</p>
@@ -1239,7 +1251,8 @@
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Holds 2&ndash;3 columns in mind</span></li>
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Works from dictation</span></li>
             </ul>
-            <div class="step-media">
+            </div>
+<div class="step-media">
               <span class="step-tag">Visualisation drill</span>
               <button class="v-btn" type="button" data-playing="0" aria-label="Play or pause this clip">
                 <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -1248,7 +1261,6 @@
               <div class="v-bar"><i></i></div>
               <video muted loop playsinline preload="metadata"><source src="step-2-visualise.mp4" type="video/mp4"></video>
             </div>
-          </div>
 <figure class="step-viz">
             <figcaption class="viz-cap">Fig. 02 &middot; Withdrawal of the tool</figcaption>
             <svg viewBox="0 0 240 132" role="img" aria-label="Chart showing reliance on the physical abacus falling as mental calculation rises">
@@ -1275,7 +1287,7 @@
         </article>
 
         <article class="hiw-step" style="--step:var(--teal);--tint:#E1F5EE;">
-          <div>
+          <div class="step-info">
             <div class="step-head"><span class="step-idx">03</span><span class="step-when">Continuous</span></div>
             <h3>Speed and accuracy</h3>
             <p>With regular guided practice, the mental image becomes second nature &mdash; boosting speed, sharpening concentration, improving calculation accuracy, and building lasting confidence.</p>
@@ -1284,7 +1296,8 @@
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Monthly report card</span></li>
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Accuracy tracked per level</span></li>
             </ul>
-            <div class="step-media">
+            </div>
+<div class="step-media">
               <span class="step-tag">Timed worksheet</span>
               <button class="v-btn" type="button" data-playing="0" aria-label="Play or pause this clip">
                 <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -1293,7 +1306,6 @@
               <div class="v-bar"><i></i></div>
               <video muted loop playsinline preload="metadata"><source src="step-3-practice.mp4" type="video/mp4"></video>
             </div>
-          </div>
 <figure class="step-viz">
             <figcaption class="viz-cap">Fig. 03 &middot; Time per sum, by term</figcaption>
             <svg viewBox="0 0 240 132" role="img" aria-label="Bar chart of average seconds per sum falling across four terms">
@@ -1317,7 +1329,7 @@
         </article>
 
         <article class="hiw-step" style="--step:#E0A400;--tint:#FFF3D6;">
-          <div>
+          <div class="step-info">
             <div class="step-head"><span class="step-idx">04</span><span class="step-when">Year 1 onward</span></div>
             <h3>Assessment and competition</h3>
             <p>Each of the eleven levels closes with a formal test. With every level they complete, students gain the confidence to compete in state and national-level competitions alongside thousands of talented learners.</p>
@@ -1326,11 +1338,11 @@
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Institute &amp; state rounds</span></li>
                 <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>National qualification</span></li>
             </ul>
-            <div class="step-media step-media--photo">
+            </div>
+<div class="step-media step-media--photo">
               <span class="step-tag">National competition</span>
               <img src="step-4-trophies.png" alt="SIP Abacus students holding trophies after a national-level competition" loading="lazy">
             </div>
-          </div>
 <figure class="step-viz">
             <figcaption class="viz-cap">Fig. 04 &middot; Progression route</figcaption>
             <svg viewBox="0 0 240 132" role="img" aria-label="Three tiers of competition from institute to state to national level">
