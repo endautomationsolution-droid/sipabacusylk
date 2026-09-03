@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sipabacusylk.com/sitemap.xml
